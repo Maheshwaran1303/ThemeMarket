@@ -74,12 +74,12 @@
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ template.rating|floatformat:1 }}</span>
+                  <span class="rating-count">{{ template.rating|floatformat:0 }}</span>
                 </p>
                 <p class="sales">{{ template.sales }} Sales</p>
               </div>
               <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' template.id %}'">
-                <i class="bi bi-cart"></i>
+                <i class="bi bi-cart-fill"></i>
               </button>
             </div>
           </div>
@@ -117,12 +117,12 @@
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ best_seller.rating|floatformat:1 }}</span>
+                  <span class="rating-count">{{ best_seller.rating|floatformat:0 }}</span>
                 </p>
                 <p class="sales">{{ best_seller.sales }} Sales</p>
               </div>
               <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' best_seller.id %}'">
-                <i class="bi bi-cart"></i>
+                <i class="bi bi-cart-fill"></i>
               </button>
             </div>
           </div>
@@ -160,12 +160,12 @@
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ top_seller.rating|floatformat:1 }}</span>
+                  <span class="rating-count">{{ top_seller.rating|floatformat:0 }}</span>
                 </p>
                 <p class="sales">{{ top_seller.sales }} Sales</p>
               </div>
               <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' top_seller.id %}'">
-                <i class="bi bi-cart"></i>
+                <i class="bi bi-cart-fill"></i>
               </button>
             </div>
           </div>
@@ -203,12 +203,12 @@
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ top_clean_item.rating|floatformat:1 }}</span>
+                  <span class="rating-count">{{ top_clean_item.rating|floatformat:0 }}</span>
                 </p>
                 <p class="sales">{{ top_clean_item.sales }} Sales</p>
               </div>
               <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' top_clean_item.id %}'">
-                <i class="bi bi-cart"></i>
+                <i class="bi bi-cart-fill"></i>
               </button>
             </div>
           </div>

@@ -39,7 +39,7 @@
           <img src="{{ item.template.image.url }}" alt="{{ item.template.name }}" class="item-image">
           <div>
             <h4 class="item-name">{{ item.template.name }}</h4>
-            <p class="license">License: <a href="#" class="license-link">{{ item.template.license_type }}</a></p>
+            <p class="license">License: <a href="#" class="license-link">Regular License</a></p>
           </div>
         </div>
 
@@ -55,6 +55,14 @@
         <a href="{% url 'main:remove_from_cart' item.id %}" class="remove-btn">×</a>
       </div>
       {% endfor %}
+      <div class="extend-support">
+        <p>
+          Extend support to 12 months. 
+          <span class="price">+${{ item.support_price|default:"6.38" }}</span>
+          <span class="save">Save $8.50.</span>
+          <a href="#" class="learn-more">Learn more</a>
+        </p>
+      </div>
     </div>
 
     <div class="cart-summary">
