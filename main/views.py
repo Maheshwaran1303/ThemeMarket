@@ -55,45 +55,51 @@ def themes(request):
     })
 
 
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from .models import ThemeProduct
+
+
 def filter_themes(request):
-    """AJAX Filtering"""
+    """AJAX Filtering with Grid/List View and No Results Handling"""
     sort_option = request.GET.get('sort', 'best')
     category = request.GET.get('category', '')
     price = request.GET.get('price', '')
     rating = request.GET.get('rating', '')
     features = request.GET.get('features', '')
     compatibility = request.GET.get('compatibility', '')
-    view_mode = request.GET.get('view', 'grid')
+    view_mode = request.GET.get('view', 'grid')  # 'grid' or 'list'
 
+    # Base queryset
     products = ThemeProduct.objects.all()
 
-    # --- Category Filter ---
-    if category and category != 'All':
-        products = products.filter(category=category)
+    # --- CATEGORY FILTER ---
+    if category and category.lower() != 'all':
+        products = products.filter(category__icontains=category)
 
-    # --- Price Filter ---
+    # --- PRICE FILTER ---
     if price == 'low':
         products = products.filter(price__lt=20)
     elif price == 'medium':
-        products = products.filter(price__range=(20, 50))
+        products = products.filter(price__gte=20, price__lte=50)
     elif price == 'high':
-        products = products.filter(price__gte=50)
+        products = products.filter(price__gt=50)
 
-    # --- Rating Filter ---
+    # --- RATING FILTER ---
     if rating == '4':
         products = products.filter(rating__gte=4)
     elif rating == '3':
         products = products.filter(rating__gte=3)
 
-    # --- Features Filter ---
-    if features and features != 'All':
+    # --- FEATURES FILTER ---
+    if features and features.lower() != 'all':
         products = products.filter(features__icontains=features)
 
-    # --- Compatibility Filter ---
-    if compatibility and compatibility != 'All':
+    # --- COMPATIBILITY FILTER ---
+    if compatibility and compatibility.lower() != 'all':
         products = products.filter(compatibility__icontains=compatibility)
 
-    # --- Sorting ---
+    # --- SORTING OPTIONS ---
     if sort_option == 'popular':
         products = products.filter(is_popular=True)
     elif sort_option == 'newest':
@@ -102,14 +108,27 @@ def filter_themes(request):
         products = products.order_by('price')
     elif sort_option == 'high':
         products = products.order_by('-price')
-    else:
+    else:  # best sellers
         products = products.filter(is_best_seller=True)
 
+    # --- RENDER PRODUCT HTML (Grid or List) ---
     html = render_to_string('main/include/product_cards.html', {
         'products': products,
-        'view_mode': view_mode
+        'view_mode': view_mode,  # pass layout mode to template
     })
+
+    # --- HANDLE NO PRODUCTS FOUND CASE ---
+    if not products.exists():
+        html = """
+        <div class="no-products-found text-center py-5">
+            <img src="/static/images/no-results.svg" alt="No Results" class="no-results-img mb-3">
+            <h5>No matching products found</h5>
+            <p class="text-muted">Try adjusting your filters or search criteria.</p>
+        </div>
+        """
+
     return JsonResponse({'html': html})
+
 
 
 from django.shortcuts import render
@@ -165,64 +184,56 @@ def contact(request):
     return render(request, 'main/contact.html')
 
 
-# Register
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 
+# 🟢 REGISTER
 def register_user(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
 
-        if not username or not password:
-            messages.error(request, "Please fill in all fields.")
-            return redirect('main:register')
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
 
-        if User.objects.filter(username=username).exists():
-            messages.warning(request, "Username already exists. Try a different one.")
-            return redirect('main:register')
-
-        user = User.objects.create_user(username=username, password=password)
+        user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
+        messages.success(request, 'Account created successfully! Please login.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect('/')
 
-        # ✅ Automatically log the user in after registration
-        login(request, user)
-        messages.success(request, f"Welcome {user.username}! Your account has been created successfully.")
-        return redirect('main:home')
-
-    return render(request, 'main/register.html')
-
-
+# 🟠 LOGIN
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        email = request.POST['email']
+        password = request.POST['password']
 
+        # Since Django auth uses username, find it by email
+        try:
+            username = User.objects.get(email=email).username
+        except User.DoesNotExist:
+            messages.error(request, 'Invalid credentials.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, f"Welcome back, {user.username}!")
-            return redirect('main:home')
+            messages.success(request, 'Login successful!')
         else:
-            messages.error(request, "Invalid username or password.")
-            return redirect('main:login')
+            messages.error(request, 'Invalid credentials.')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect('/')
 
-    return render(request, 'main/login.html')
-
-
+# 🔴 LOGOUT
 def logout_user(request):
     logout(request)
-    messages.info(request, "You have successfully logged out.")
-    return redirect('main:home')
+    messages.success(request, 'Logged out successfully!')
+    return redirect('/')
 
-
-
-def logout_user(request):
-    logout(request)
-    messages.info(request, "You have logged out successfully.")
-    return redirect('main:home')
 
 
 # Cart Page

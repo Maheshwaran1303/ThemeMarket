@@ -32,3 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch("/register/")
     });
 });
+
+
+
+// Mega menu hover functionality
+document.querySelectorAll('.mega-dropdown').forEach((item) => {
+  item.addEventListener('mouseenter', () => {
+    const menu = item.querySelector('.mega-menu');
+    menu.classList.add('show');
+  });
+  item.addEventListener('mouseleave', () => {
+    const menu = item.querySelector('.mega-menu');
+    menu.classList.remove('show');
+  });
+});

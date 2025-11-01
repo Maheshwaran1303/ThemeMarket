@@ -18,7 +18,7 @@
       <!-- Register Form -->
       <div id="registerForm" class="auth-form active">
         <h2 class="auth-title">Create Account</h2>
-        <form method="POST">
+        <form method="POST" action="{% url 'main:register' %}">
           {% csrf_token %}
           <input type="text" name="username" placeholder="Full Name" required>
           <input type="email" name="email" placeholder="Email" required>
@@ -47,7 +47,7 @@
       <!-- Login Form -->
       <div id="loginForm" class="auth-form">
         <h2 class="auth-title">Welcome Back!</h2>
-        <form method="POST">
+        <form method="POST" action="{% url 'main:login' %}">
           {% csrf_token %}
           <input type="email" name="email" placeholder="Email" required>
           <input type="password" name="password" placeholder="Password" required>

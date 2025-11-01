@@ -16,33 +16,97 @@
     <!-- ===== NAV LINKS ===== -->
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'main:home' %}">Home</a></li>
-        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'themes' %}active{% endif %}" href="{% url 'main:themes' %}">Themes</a></li>
-        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'templates' %}active{% endif %}" href="{% url 'main:templates' %}">Templates</a></li>
-        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'main:about' %}">About Us</a></li>
-        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'main:contact' %}">Contact</a></li>
+
+  <li class="nav-item">
+    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
+       href="{% url 'main:home' %}">Home</a>
+  </li>
+
+  <!-- ===== THEMES DROPDOWN ===== -->
+  <li class="nav-item dropdown mega-dropdown">
+    <a class="nav-link  {% if request.resolver_match.url_name == 'themes' %}active{% endif %}" 
+       href="{% url 'main:themes' %}" id="themesDropdown">Themes</a>
+
+    <div class="dropdown-menu mega-menu p-4 text-start" aria-labelledby="themesDropdown">
+      <ul class="list-unstyled mb-0">
+        <li><a href="{% url 'main:themes' %}" class="dropdown-item">Business Themes</a></li>
+        <li><a href="{% url 'main:themes' %}" class="dropdown-item">Portfolio Themes</a></li>
+        <li><a href="{% url 'main:themes' %}" class="dropdown-item">Blog Themes</a></li>
+        <li><a href="{% url 'main:themes' %}" class="dropdown-item">E-Commerce Themes</a></li>
       </ul>
+    </div>
+  </li>
+
+  <!-- ===== TEMPLATES DROPDOWN ===== -->
+  <li class="nav-item dropdown mega-dropdown">
+    <a class="nav-link  {% if request.resolver_match.url_name == 'templates' %}active{% endif %}" 
+       href="{% url 'main:templates' %}" id="templatesDropdown">Templates</a>
+
+    <div class="dropdown-menu mega-menu p-4 text-start" aria-labelledby="templatesDropdown">
+      <ul class="list-unstyled mb-0">
+        <li><a href="{% url 'main:templates' %}" class="dropdown-item">HTML Templates</a></li>
+        <li><a href="{% url 'main:templates' %}" class="dropdown-item">Landing Page Templates</a></li>
+        <li><a href="{% url 'main:templates' %}" class="dropdown-item">UI Kits</a></li>
+      </ul>
+    </div>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" 
+       href="{% url 'main:about' %}">About Us</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" 
+       href="{% url 'main:contact' %}">Contact</a>
+  </li>
+</ul>
+
 
       <!-- ===== ICONS ===== -->
       <div class="d-flex align-items-center gap-3">
-        <!-- Profile Icon -->
-        
-          <i class="bi bi-person-circle user-icon icon-link" id="personIcon" onclick="openAuthModal()"></i>
-          
+<!-- ===== PROFILE ICON ===== -->
+{% if request.user.is_authenticated %}
+  <!-- Logged-in User: Show only Logout option -->
+  <div class="dropdown">
+    <a href="#" class="icon-link  d-flex align-items-center" id="profileDropdown"
+       data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="ms-2 fw-semibold username">{{ request.user.username }}</span>
+    </a>
 
-        <!-- Cart Icon -->
-        <a href="{% url 'main:cart' %}" class="icon-link position-relative">
-          <i class="bi bi-cart3"></i>
-          {% if request.user.is_authenticated %}
-            {% with cart_count=request.user.cartitem_set.count %}
-              {% if cart_count > 0 %}
-                <span class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                  {{ cart_count }}
-                </span>
-              {% endif %}
-            {% endwith %}
-          {% endif %}
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown">
+      <li>
+        <a class="dropdown-item text-danger fw-semibold" href="{% url 'main:logout' %}">
+          <i class="bi bi-box-arrow-right me-2"></i> Logout
         </a>
+      </li>
+    </ul>
+  </div>
+{% else %}
+  <!-- Not Logged In: Open Register/Login Modal -->
+  <i class="bi bi-person-circle icon-link" id="personIcon" onclick="openAuthModal()"></i>
+{% endif %}
+
+
+<!-- ===== CART ICON ===== -->
+{% if request.user.is_authenticated %}
+  <!-- Logged-in user: Go to cart page -->
+  <a href="{% url 'main:cart' %}" class="icon-link position-relative" id="cartIcon">
+    <i class="bi bi-cart3"></i>
+    {% with cart_count=request.user.cartitem_set.count %}
+      {% if cart_count > 0 %}
+        <span class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+          {{ cart_count }}
+        </span>
+      {% endif %}
+    {% endwith %}
+  </a>
+{% else %}
+  <!-- Not logged in: Open modal -->
+  <a href="#" class="icon-link position-relative" id="cartIcon" onclick="openAuthModal()">
+    <i class="bi bi-cart3"></i>
+  </a>
+{% endif %}
       </div>
     </div>
   </div>

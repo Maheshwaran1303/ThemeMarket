@@ -1,59 +1,54 @@
+{% load static %}
+
 <div id="productsContainer" class="products-container grid">
-  {% if products %}
-    {% for template in products %}
-      <div class="product-card">
-        <!-- Image -->
-        <div class="product-img">
-          <img src="{{ template.image.url }}" alt="{{ template.name }}">
-        </div>
-
-        <!-- Info -->
-        <div class="product-info">
-          <h5 class="product-name">{{ template.name }}</h5>
-          <p class="author">by {{ template.author }}</p>
-
-          <!-- Only visible in list view -->
-          <ul class="list-details">
-            <li>1 Selling Theme</li>
-            <li>Best Customer Support</li>
-            <li>New Features</li>
-          </ul>
-
-          <hr class="divider-line">
-
-          <!-- Footer -->
-          <div class="product-footer">
-            <div class="footer-left">
-              <p class="price">${{ template.price|floatformat:0 }}</p>
-              <div class="stars">
-                {% for i in "12345" %}
-                  {% if forloop.counter <= template.rating|floatformat:0 %}
-                    <i class="bi bi-star-fill"></i>
-                  {% else %}
-                    <i class="bi bi-star"></i>
-                  {% endif %}
-                {% endfor %}
-                <span class="rating-count">{{ template.rating|floatformat:1 }}</span>
-              </div>
-              <p class="sales">{{ template.sales }} Sales</p>
-            </div>
-
-            <div class="footer-center">
-              <i class="bi bi-cart-fill cart-icon"></i>
-            </div>
-
-            <div class="footer-right">
-              <a href="#" class="btn-live">Live Preview</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="no-results">
-      <i class="bi bi-emoji-frown"></i>
-      <h4>No products found</h4>
-      <p>Try adjusting your filters or search keywords.</p>
+  {% for product in products %}
+  <div class="product-card">
+    <div class="product-img">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      {% endif %}
     </div>
-  {% endif %}
+          <!-- CARD BODY -->
+<div class="arrival-body text-center">
+  <h6 class="arrival-title">{{ product.name }}</h6>
+  <p class="arrival-author">by {{ product.author }}</p>
+
+  <!-- PRICE + RATING + SALES (Column 1) -->
+  <div class="details-row d-flex justify-content-between align-items-center mt-3">
+    <div class="info-column text-start">
+      <p class="price mb-1">${{ product.price }}</p>
+      <div class="stars mb-1">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star"></i>
+        <span class="rating-count">6</span>
+      </div>
+      <p class="sales mb-0">{{ product.sales }} Sales</p>
+    </div>
+
+  <!-- CART ICON (Column 2) -->
+    <div class="cart-column">
+      <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+        <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+      </button>
+    </div>
+
+
+    <!-- LIVE PREVIEW BUTTON (Column 3) -->
+    <div class="preview-column">
+      <a href="#" class="btn preview-btn">
+        Live Preview
+      </a>
+    </div>
+  </div>
+</div>  </div>
+  {% empty %}
+  <p class="text-center w-100 py-4 text-muted">No products found matching your filters.</p>
+  {% endfor %}
 </div>
+    
+
+
+

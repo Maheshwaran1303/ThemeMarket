@@ -65,7 +65,7 @@ html {
   font-weight: 600;
 }
 
-.navbar-nav .nav-link.active::after {
+.navbar-nav .nav-link.active::after  {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -94,4 +94,100 @@ html {
 /* Mobile navbar toggle icon (white) */
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* ===== Navbar User Icon ===== */
+.user-icon {
+  font-size: 26px;
+  color: #0C2F5C;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.user-icon:hover {
+  color: #6CA12B;
+}
+
+.icon-link {
+  text-decoration: none;
+}
+
+.username {
+  font-size: 18px;
+  color: #AFA9A9;
+}
+
+/* ===== Dropdown Styling ===== */
+.dropdown-menu {
+  border-radius: 10px;
+  border: 1px solid #EDEDED;
+  min-width: 130px;
+  padding: 6px 0;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+.dropdown-item {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 16px;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #fff5f5;
+  color: #dc3545;
+}
+
+
+.dropdown-item.text-danger:hover {
+  background-color: #fff5f5;
+}
+
+
+/* ==========================
+   Text-Only Mega Dropdown
+========================== */
+.mega-dropdown {
+  position: static !important;
+}
+
+.mega-menu {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  min-width: 260px;
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
+  z-index: 1000;
+}
+
+.mega-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mega-menu .dropdown-item {
+  padding: 10px 0;
+  color: #222;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.2s ease;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.mega-menu .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.mega-menu .dropdown-item:hover {
+  color: #6CA12B;
+  background: none;
 }
