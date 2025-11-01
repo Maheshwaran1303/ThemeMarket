@@ -1,0 +1,558 @@
+/* ===============================
+   ABOUT HERO SECTION - FINAL (Exact UI)
+   =============================== */
+
+.about-hero-section {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: url("/static/images/about-bg.jpg") center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #0D0C0C66;
+  margin-top: 0 !important;
+}
+
+/* ✨ Gradient Overlay — Balanced */
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      90deg,
+      rgba(90, 56, 247, 0.92) 0%,
+      rgba(92, 74, 107, 0.65) 45%,
+      rgba(132, 111, 226, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+/* ===============================
+   TEXT CONTENT
+   =============================== */
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 20px;
+  margin-top: 200px;
+}
+
+.about-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 42px;
+  color: #fff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 35px;
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   SEARCH BAR
+   =============================== */
+.about-search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 540px;
+  height: 68px;
+  background: #ffffff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.search-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.search-icon {
+  font-size: 22px;
+  color: #777;
+  margin-left: 18px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #333;
+  font-family: "Inter", sans-serif;
+  background: transparent;
+}
+
+.search-btn {
+  background: #6CA12B;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 28px;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background: #5d9226;
+  box-shadow: 0px 4px 12px rgba(108, 161, 43, 0.5);
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  .search-bar {
+    width: 90%;
+    height: 60px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+
+  .search-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+
+
+/* ===============================
+   CONTACT PAGE
+   =============================== */
+
+.contact-section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.contact-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1a2a47;
+  margin-bottom: 15px;
+}
+
+.contact-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #333;
+  max-width: 650px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+/* ===== GRID ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== CARD ===== */
+.contact-card {
+  background: #ffffff;
+  border-radius: 15px;
+  border: 2px solid #afa8a8;
+  box-shadow: 0px 5px 4px 7px #00000026;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 310px;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 12px 7px #00000026;
+}
+
+/* ===== ICON BOX ===== */
+.icon-box {
+  width: 70px;
+  height: 70px;
+  background: #d8e7f9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.icon-box img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+/* ===== TEXT ===== */
+.contact-card h4 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #1a2a47;
+  margin-bottom: 10px;
+}
+
+.contact-card .desc {
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.contact-card .info {
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+
+/* ===============================
+   SEND US A MESSAGE FORM STYLES
+   =============================== */
+
+body {
+  background: #f4f6ff;
+  font-family: "Inter", sans-serif;
+}
+
+.form-section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.form-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1a2a47;
+  margin-bottom: 10px;
+}
+
+.form-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 50px;
+}
+
+/* ===== FORM ===== */
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  width: 100%;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* ===== INPUTS ===== */
+input,
+textarea {
+  background: #78D5FF;
+  border-bottom: 3px solid #FFFFFF;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: #000;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #3ba9f0;
+}
+
+/* ===== BUTTON ===== */
+.btn-submit {
+  background: #76c01d;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 30px;
+  box-shadow: 0px 5px 4px 3px #00000040;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #69ad1a;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+
+/* ===============================
+   BOOTSTRAP FAQ STYLING
+   =============================== */
+
+.faq-section {
+  background: #f4f6ff;
+  padding: 100px 0;
+}
+
+.faq-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1a2a47;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+/* Accordion Styling */
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.accordion-item {
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Accordion Header (Question Button) */
+.accordion-button {
+  background: linear-gradient(90deg, #4b0082 0%, #8b008b 100%);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 16px 20px;
+  border: none;
+  outline: none;
+  transition: background 0.3s ease;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background: linear-gradient(90deg, #5500a3 0%, #9b00b3 100%);
+  color: #fff;
+}
+
+.accordion-button::after {
+  content: '\25BC'; /* down arrow */
+  color: #fff;
+  font-size: 13px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+/* Accordion Body (Answer) */
+.accordion-body {
+  background: linear-gradient(90deg, #4b0082 0%, #8b008b 100%);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 16px 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Footer (Help Button) */
+.faq-footer p {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.btn-help {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  background: #fff;
+  color: #1a2a47;
+  border: 1px solid #a0a0a0;
+  box-shadow: 0px 5px 4px 3px #00000040;
+  border-radius: 5px;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-help:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+
+/* ===============================
+   WE'RE HERE TO HELP SECTION
+   =============================== */
+
+.help-section {
+  background-color: #f4f6ff;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.help-card {
+  background: linear-gradient(90deg, #4b0082 0%, #8b008b 100%);
+  border-radius: 16px;
+  padding: 60px 40px;
+  max-width: 850px;
+  margin: 0 auto;
+  color: #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.help-icon img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+.help-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.help-description {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+/* ===== FEATURES ROW ===== */
+.help-features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #c8ffc8; /* Light green tone */
+  font-size: 14px;
+}
+
+.feature-item img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) saturate(100%) invert(80%) sepia(40%) saturate(400%) hue-rotate(65deg);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .help-card {
+    padding: 40px 20px;
+  }
+
+  .help-title {
+    font-size: 22px;
+  }
+
+  .help-description {
+    font-size: 14px;
+  }
+
+  .help-features {
+    gap: 20px;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,761 @@
+{% extends 'main/layout/base.html' %} {% load static %} {% block title %}Home |
+Theme Market{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+{% endblock %} {% block content %}
+<section class="hero-section py-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <!-- LEFT CONTENT -->
+      <div class="col-lg-6 col-md-12 hero-left text-center">
+        <span class="hero-badge">50,000+ Premium Templates Available</span>
+
+        <h1 class="hero-heading">
+          Build Stunning <br />
+          <span class="highlight">Websites Faster</span>
+        </h1>
+
+        <!-- Controlled line breaks -->
+        <p class="hero-subtext">
+          Access thousands of professionally <br />
+          designed WordPress themes and <br />
+          templates. Launch your dream website in <br />
+          minutes, not months.
+        </p>
+
+      <!-- SEARCH BAR -->
+      <form class="hero-search">
+        <div class="search-icon">
+          <i class="bi bi-search"></i>
+        </div>
+        <input
+          type="text"
+          class="hero-input"
+          placeholder="Search for WordPress, E commerce...."
+        />
+        <button type="submit" class="hero-btn">Search</button>
+      </form>
+
+
+        <!-- STATS -->
+        <div class="hero-stats d-flex flex-wrap align-items-center mt-5">
+          <div class="stat-group me-4 d-flex align-items-center">
+            <div class="gradient-dots me-3">
+              <span class="ellipse e1"></span>
+              <span class="ellipse e2"></span>
+              <span class="ellipse e3"></span>
+              <span class="ellipse e4"></span>
+            </div>
+            <div>
+              <h6 class="fw-bold mb-0">12M+ Users</h6>
+              <p class="mb-0 text-muted small">Trusted worldwide</p>
+            </div>
+          </div>
+
+          <div class="rating-group d-flex align-items-center">
+            <i class="bi bi-clock-fill fs-5 me-2 vector "></i>
+            <div>
+              <h6 class="fw-bold mb-0">4.9/5 Rating</h6>
+              <p class="mb-0 text-muted small">From 50k reviews</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT IMAGES -->
+      <div class="col-lg-6 col-md-12 hero-right text-center mt-5 mt-lg-0">
+        <div class="hero-images-wrapper">
+          <img
+            src="{% static 'images/hero3.jpg' %}"
+            class="hero-img img-main shadow-lg"
+            alt="Theme Main"
+          />
+          <img
+            src="{% static 'images/hero1.jpg' %}"
+            class="hero-img img-top-left shadow-lg"
+            alt="Theme Top Left"
+          />
+          <img
+            src="{% static 'images/hero2.jpg' %}"
+            class="hero-img img-top-right shadow-lg"
+            alt="Theme Top Right"
+          />
+          <img
+            src="{% static 'images/hero4.jpg' %}"
+            class="hero-img img-bottom-right shadow-lg"
+            alt="Theme Bottom"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BROWSE BY CATEGORY SECTION -->
+<section class="category-section py-5">
+  <div class="container text-center">
+    <h2 class="category-title">Browse by Category</h2>
+    <p class="category-subtext">Find the perfect template for your project</p>
+
+    <div class="row justify-content-center mt-4 g-4">
+
+      <!-- WordPress -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-wordpress.png' %}" alt="WordPress Icon" class="icon-img" />
+          </div>
+          <h5>Word Press</h5>
+          <p>14,289 Items</p>
+        </div>
+      </div>
+
+      <!-- eCommerce -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-ecommerce.png' %}" alt="eCommerce Icon" class="icon-img" />
+          </div>
+          <h5>e Commerce</h5>
+          <p>8,562 Items</p>
+        </div>
+      </div>
+
+      <!-- Photography -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-photography.png' %}" alt="Photography Icon" class="icon-img" />
+          </div>
+          <h5>Photography</h5>
+          <p>3,421 Items</p>
+        </div>
+      </div>
+
+      <!-- Business -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-business.png' %}" alt="Business Icon" class="icon-img" />
+          </div>
+          <h5>Business</h5>
+          <p>9,156 Items</p>
+        </div>
+      </div>
+
+      <!-- Blog Magazine -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-blog.png' %}" alt="Blog Magazine Icon" class="icon-img" />
+          </div>
+          <h5>Blog Magazine</h5>
+          <p>5,234 Items</p>
+        </div>
+      </div>
+
+      <!-- Mobile Apps -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-mobile.png' %}" alt="Mobile Apps Icon" class="icon-img" />
+          </div>
+          <h5>Mobile Apps</h5>
+          <p>2,890 Items</p>
+        </div>
+      </div>
+
+      <!-- Marketing -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-marketing.png' %}" alt="Marketing Icon" class="icon-img" />
+          </div>
+          <h5>Marketing</h5>
+          <p>4,567 Items</p>
+        </div>
+      </div>
+
+      <!-- Technology -->
+      <div class="col-md-3 col-sm-6">
+        <div class="category-card">
+          <div class="icon-wrap">
+            <img src="{% static 'images/icons/icon-technology.png' %}" alt="Technology Icon" class="icon-img" />
+          </div>
+          <h5>Technology</h5>
+          <p>6,123 Items</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- FEATURED WORDPRESS THEMES SECTION -->
+<section class="featured-section py-5">
+  <div class="container">
+
+    <!-- SECTION HEADER -->
+    <!-- FEATURED WORDPRESS THEMES SECTION -->
+    <section class="featured-section py-5">
+      <div class="container text-center">
+        <h2 class="featured-title">Featured WordPress Themes</h2>
+        <p class="featured-subtext mt-3">
+          Every week, our staff personally hand-pick some of the <br> best new website themes from our collection.
+        </p>
+
+        <div class="mt-4">
+          <a href="#" class="btn view-all-btn">View all Featured Themes</a>
+        </div>
+      </div>
+    </section>
+
+
+
+<!-- FEATURED THEMES SECTION -->
+
+<section class="new-arrivals py-5 text-center mb-0">
+
+  <div class="container">
+
+    <!-- Products Grid -->
+    <div class="row justify-content-center">
+      {% for product in featured_themes %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="arrival-card">
+
+          <!-- IMAGE -->
+          <div class="arrival-img">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+          </div>
+
+          <!-- CARD BODY -->
+<div class="arrival-body text-center">
+  <h6 class="arrival-title">{{ product.title }}</h6>
+  <p class="arrival-author">by {{ product.author }}</p>
+
+  <!-- PRICE + RATING + SALES (Column 1) -->
+  <div class="details-row d-flex justify-content-between align-items-center mt-3">
+    <div class="info-column text-start">
+      <p class="price mb-1">${{ product.price }}</p>
+      <div class="stars mb-1">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star"></i>
+        <span class="rating-count">6</span>
+      </div>
+      <p class="sales mb-0">{{ product.sales }} Sales</p>
+    </div>
+
+  <!-- CART ICON (Column 2) -->
+    <div class="cart-column">
+      <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+        <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+      </button>
+    </div>
+
+
+    <!-- LIVE PREVIEW BUTTON (Column 3) -->
+    <div class="preview-column">
+      <a href="#" class="btn preview-btn">
+        Live Preview
+      </a>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  </div>
+</section>
+
+
+
+<!-- ==========================
+     TRENDING COLLECTIONS SECTION
+=========================== -->
+<section class="trending-section text-center py-5">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header mb-4">
+      <div class="section-badge">Trending Collections</div>
+      <p class="section-subtitle">Curated collections from our experts</p>
+    </div>
+
+    <!-- Trending Cards -->
+    <div class="row justify-content-center">
+      {% for product in trending_products %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="trending-card">
+          <div class="card-image">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+          </div>
+          <div class="card-overlay">
+            <!-- <h5 class="product-title">{{ product.title }}</h5> -->
+            {% if product.price %}
+            <p class="product-price">${{ product.price }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ==========================
+     TRUSTED BY MILLIONS SECTION
+=========================== -->
+<section class="trusted-section text-center py-5">
+  <div class="container">
+    <!-- Section Header -->
+    <h2 class="trusted-title mb-2">Trusted by Millions Worldwide</h2>
+    <p class="trusted-subtitle mb-5">Join the largest digital marketplace community</p>
+
+    <!-- Stats -->
+    <div class="row justify-content-center text-white">
+      <div class="col-md-3 col-6 mb-4 mb-md-0">
+        <h3 class="trusted-number">12M+</h3>
+        <p class="trusted-label">Community Members</p>
+      </div>
+      <div class="col-md-3 col-6 mb-4 mb-md-0">
+        <h3 class="trusted-number">50K+</h3>
+        <p class="trusted-label">Digital Products</p>
+      </div>
+      <div class="col-md-3 col-6 mb-4 mb-md-0">
+        <h3 class="trusted-number">500M+</h3>
+        <p class="trusted-label">Total Downloads</p>
+      </div>
+      <div class="col-md-3 col-6 mb-4 mb-md-0">
+        <h3 class="trusted-number">15K+</h3>
+        <p class="trusted-label">Elite Authors</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ==========================
+     BEST SELLERS SECTION
+=========================== -->
+<section class="best-sellers text-center py-5">
+  <div class="container">
+
+    <!-- Title -->
+    <h2 class="section-title mb-2">Best Sellers</h2>
+    <p class="section-subtitle">Top selling items this period</p>
+
+    <!-- Toggle Buttons -->
+    <div class="toggle-buttons d-inline-flex mt-3 mb-5">
+      <button class="toggle-btn active" data-target="week">This Week</button>
+      <button class="toggle-btn" data-target="month">This Month</button>
+    </div>
+
+
+
+<section class="new-arrivals py-5 text-center mb-0">
+  <div class="container">
+
+    <!-- ===============================
+         WEEK PRODUCTS SECTION
+    ================================ -->
+    <div class="row justify-content-center product-grid week-products">
+      {% for product in week_products %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="arrival-card">
+
+          <!-- IMAGE -->
+          <div class="arrival-img">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+          </div>
+
+          <!-- CARD BODY -->
+          <div class="arrival-body text-center">
+            <h6 class="arrival-title">{{ product.title }}</h6>
+            <p class="arrival-author">by {{ product.author }}</p>
+
+            <!-- PRICE + RATING + SALES + BUTTONS -->
+            <div class="details-row d-flex justify-content-between align-items-center mt-3">
+              
+              <!-- COLUMN 1: Price + Rating + Sales -->
+              <div class="info-column text-start">
+                <p class="price mb-1">${{ product.price }}</p>
+                <div class="stars mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <span class="rating-count">6</span>
+                </div>
+                <p class="sales mb-0">{{ product.sales }} Sales</p>
+              </div>
+
+              <!-- COLUMN 2: Cart Icon -->
+              <div class="cart-column">
+                <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+                  <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+                </button>
+              </div>
+
+              <!-- COLUMN 3: Live Preview -->
+              <div class="preview-column">
+                <a href="#" class="btn preview-btn">Live Preview</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- End Week Products -->
+
+    <!-- ===============================
+         MONTH PRODUCTS SECTION
+    ================================ -->
+    <div class="row justify-content-center product-grid month-products d-none">
+      {% for product in month_products %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="arrival-card">
+
+          <!-- IMAGE -->
+          <div class="arrival-img">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+          </div>
+
+          <!-- CARD BODY -->
+          <div class="arrival-body text-center">
+            <h6 class="arrival-title">{{ product.title }}</h6>
+            <p class="arrival-author">by {{ product.author }}</p>
+
+            <!-- PRICE + RATING + SALES + BUTTONS -->
+            <div class="details-row d-flex justify-content-between align-items-center mt-3">
+              
+              <!-- COLUMN 1: Price + Rating + Sales -->
+              <div class="info-column text-start">
+                <p class="price mb-1">${{ product.price }}</p>
+                <div class="stars mb-1">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <span class="rating-count">6</span>
+                </div>
+                <p class="sales mb-0">{{ product.sales }} Sales</p>
+              </div>
+
+              <!-- COLUMN 2: Cart Icon -->
+              <div class="cart-column">
+                <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+                  <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+                </button>
+              </div>
+
+              <!-- COLUMN 3: Live Preview -->
+              <div class="preview-column">
+                <a href="#" class="btn preview-btn">Live Preview</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- End Month Products -->
+
+  </div>
+</section>
+
+
+<!-- ==========================
+     NEW ARRIVALS SECTION
+=========================== -->
+<section class="new-arrivals py-5 text-center mb-0">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center mb-5">
+      <div class="badge-pill mx-auto">New Arrivals</div>
+      <p class="subtitle mb-2">Fresh templates added this week</p>
+      <a href="{% url 'main:templates' %}" class="view-all">View All →</a>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="row justify-content-center">
+      {% for product in new_arrivals %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="arrival-card">
+
+          <!-- IMAGE -->
+          <div class="arrival-img">
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+          </div>
+
+          <!-- CARD BODY -->
+<div class="arrival-body text-center">
+  <h6 class="arrival-title">{{ product.title }}</h6>
+  <p class="arrival-author">by {{ product.author }}</p>
+
+  <!-- PRICE + RATING + SALES (Column 1) -->
+  <div class="details-row d-flex justify-content-between align-items-center mt-3">
+    <div class="info-column text-start">
+      <p class="price mb-1">${{ product.price }}</p>
+      <div class="stars mb-1">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star"></i>
+        <span class="rating-count">6</span>
+      </div>
+      <p class="sales mb-0">{{ product.sales }} Sales</p>
+    </div>
+
+  <!-- CART ICON (Column 2) -->
+<div class="cart-column">
+  <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+    <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+  </button>
+</div>
+
+
+    <!-- LIVE PREVIEW BUTTON (Column 3) -->
+    <div class="preview-column">
+      <a href="#" class="btn preview-btn">
+        Live Preview
+      </a>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+
+  </div>
+</section>
+
+
+
+<!-- ==========================
+     WHY CHOOSE OUR MARKETPLACE
+=========================== -->
+<section class="why-choose py-5 text-center mt-0 ">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header mb-0">
+      <div class="badge-pill mx-auto">Why Choose Our Marketplace</div>
+      <p class="subtitle mt-2">Everything you need to build amazing websites</p>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="row justify-content-center g-4">
+      <!-- Feature 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h5 class="feature-title">Quality Guaranteed</h5>
+          <p class="feature-text">All items are reviewed by our team to ensure the highest standards</p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-map"></i>
+          </div>
+          <h5 class="feature-title">Instant Downloads</h5>
+          <p class="feature-text">Get immediate access to your purchases, no waiting required</p>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-headset"></i>
+          </div>
+          <h5 class="feature-title">24/7 Support</h5>
+          <p class="feature-text">Our dedicated support team is here to help you anytime</p>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-arrow-repeat"></i>
+          </div>
+          <h5 class="feature-title">Regular Updates</h5>
+          <p class="feature-text">Authors constantly update items with new features and fixes</p>
+        </div>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-award"></i>
+          </div>
+          <h5 class="feature-title">Elite Authors</h5>
+          <p class="feature-text">Work with the best designers and developers in the industry</p>
+        </div>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-currency-dollar"></i>
+          </div>
+          <h5 class="feature-title">Great Value</h5>
+          <p class="feature-text">Competitive pricing with frequent sales and special offers</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================
+     STAY UPDATED SECTION
+=========================== -->
+<section class="stay-updated py-5 text-center">
+  <div class="container">
+    <div class="update-box mx-auto p-5 rounded-4">
+      <h3 class="update-title mb-3">Stay Updated</h3>
+      <p class="update-subtitle mb-4">
+        Get the latest themes, exclusive deals, and design inspiration <br>
+        delivered to your inbox weekly
+      </p>
+
+      <form method="POST" class="update-form d-flex justify-content-center flex-wrap">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" required class="email-input me-2">
+        <button type="submit" class="btn subscribe-btn">Subscribe</button>
+      </form>
+
+      <p class="privacy-text mt-3">
+        By subscribing, you agree to our Privacy Policy and consent to receive updates
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     CUSTOMER TESTIMONIALS
+=========================== -->
+<section class="testimonials py-5 text-center">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header mb-5">
+      <div class="badge-pill mx-auto">What Our Customers Say</div>
+      <p class="subtitle mt-2">Join thousands of satisfied customers</p>
+    </div>
+
+    <!-- Testimonials Row -->
+    <div class="row justify-content-center g-4">
+      <!-- Testimonial 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-header d-flex align-items-center mb-3">
+            <img src="{% static 'images/testimonials/testimonial1.jpg' %}" alt="Sarah Johnson" class="testimonial-img me-3">
+            <div class="testimonial-user">
+              <h6 class="user-name">Sarah Johnson</h6>
+              <p class="user-role">Web Developer</p>
+            </div>
+          </div>
+          <div class="stars mb-3">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            The quality of themes on this marketplace is outstanding. I've built over 20 client sites using templates from here and they never disappoint.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-header d-flex align-items-center mb-3">
+            <img src="{% static 'images/testimonials/testimonial2.jpg' %}" alt="Michael Chen" class="testimonial-img me-3">
+            <div class="testimonial-user">
+              <h6 class="user-name">Michael Chen</h6>
+              <p class="user-role">Agency Owner</p>
+            </div>
+          </div>
+          <div class="stars mb-3">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            As an agency, we rely on high-quality templates to deliver projects quickly. The variety and quality here are unmatched in the industry.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-header d-flex align-items-center mb-3">
+            <img src="{% static 'images/testimonials/testimonial3.jpg' %}" alt="Emily Rodriguez" class="testimonial-img me-3">
+            <div class="testimonial-user">
+              <h6 class="user-name">Emily Rodriguez</h6>
+              <p class="user-role">Freelance Designer</p>
+            </div>
+          </div>
+          <div class="stars mb-3">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            I love how easy it is to customize these themes. The documentation is excellent and the support from authors is fantastic.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %} 
+
+{% block extra_js %}
+  <script src="{% static 'scripts/home.js' %}"></script>
+{% endblock %}

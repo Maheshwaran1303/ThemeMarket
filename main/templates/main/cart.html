@@ -1,0 +1,74 @@
+<!-- templates/main/cart.html -->
+
+{% extends 'main/layout/base.html' %}
+{% load static %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO SECTION ===== -->
+<section class="about-hero-section">
+  <div class="about-hero-overlay"></div>
+  <div class="about-hero-content text-center">
+    <h1 class="about-title">Empowering Creators Worldwide</h1>
+    <form method="GET" class="about-search-form">
+      <div class="search-bar">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search for WordPress, E commerce...">
+        <button class="search-btn" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CART SECTION -->
+<section class="cart-section">
+  <h2 class="cart-title">Shopping Cart</h2>
+
+  <div class="cart-container">
+    <div class="cart-left">
+      <div class="cart-actions">
+        <a href="{% url 'main:templates' %}" class="btn-continue">Continue Shopping</a>
+        <a href="{% url 'main:empty_cart' %}" class="btn-empty">Empty Cart</a>
+      </div>
+
+      {% for item in cart_items %}
+      <div class="cart-item">
+        <div class="item-details">
+          <img src="{{ item.template.image.url }}" alt="{{ item.template.name }}" class="item-image">
+          <div>
+            <h4 class="item-name">{{ item.template.name }}</h4>
+            <p class="license">License: <a href="#" class="license-link">{{ item.template.license_type }}</a></p>
+          </div>
+        </div>
+
+        <div class="quantity-controls" data-item-id="{{ item.id }}">
+            <button class="qty-btn decrease">−</button>
+            <span class="qty">{{ item.quantity }}</span>
+            <button class="qty-btn increase">+</button>
+        </div>
+
+
+        <p class="item-price">${{ item.template.price }}</p>
+
+        <a href="{% url 'main:remove_from_cart' item.id %}" class="remove-btn">×</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="cart-summary">
+      <h3>Your Cart Total</h3>
+        <p class="cart-total" id="cart-total">US$ {{ total|floatformat:2 }}</p>
+        <p class="savings" id="cart-savings">Total Saving ${{ savings|floatformat:2 }}</p>
+        <p class="grand-total" id="cart-grand">Grand Total ${{ grand_total|floatformat:2 }}</p>
+        <a href="{% url 'main:checkout' %}" class="btn-checkout">Secure Checkout</a>
+        <p class="disclaimer">
+            Price displayed excludes any applicable <br>
+            <a href="#">taxes and a handling fee</a>.
+        </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

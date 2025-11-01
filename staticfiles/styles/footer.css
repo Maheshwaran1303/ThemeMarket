@@ -1,0 +1,119 @@
+/* ==========================
+   FOOTER SECTION STYLES
+=========================== */
+.footer {
+  background: #3B0C87;
+  color: #fff;
+  padding: 80px 0 40px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Logo */
+.footer-logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+.footer-logo span {
+  font-style: italic;
+  color: #fff;
+}
+
+/* Section Titles */
+.footer-title {
+  font-weight: 600;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+/* Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 8px;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.footer-links a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+/* Divider */
+.footer-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 40px 0 25px 0;
+}
+
+/* Social Icons */
+.footer-social .social-icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.footer-social .social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.footer-social .social-icons a:hover {
+  background: #6CA12B;
+  color: #fff;
+}
+
+/* Copyright Text */
+.footer-copy {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.2px;
+}
+
+/* Spacing Between Columns */
+.footer-top {
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .footer {
+    text-align: center;
+  }
+  .footer-social .social-icons {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 60px 20px 30px 20px;
+  }
+  .footer-logo {
+    font-size: 24px;
+  }
+  .footer-title {
+    font-size: 16px;
+  }
+  .footer-links a {
+    font-size: 14px;
+  }
+}

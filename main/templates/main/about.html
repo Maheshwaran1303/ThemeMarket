@@ -1,0 +1,206 @@
+<!-- templates/main/aboutus.html -->
+
+{% extends 'main/layout/base.html' %}
+{% load static %}
+
+{% block title %}About Us - ThemeMarket{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'styles/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="about-hero-section">
+  <div class="about-hero-overlay"></div>
+  <div class="about-hero-content text-center">
+    <h1 class="about-title">Empowering Creators Worldwide</h1>
+    <form method="GET" class="about-search-form">
+      <div class="search-bar">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search for WordPress, E commerce...">
+        <button class="search-btn" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== SAVE ON UI TEMPLATES SECTION ===== -->
+<section class="ui-stats-section mb-0">
+  <div class="container text-center">
+    <h2 class="ui-stats-title">Save on UI Templates</h2>
+
+    <div class="ui-stats-grid">
+  <!-- Card 1 -->
+  <div class="ui-stat-card">
+    <div class="ui-icon">
+      <img src="{% static 'images/icons/users-icon.png' %}" alt="Active Users" />
+    </div>
+    <h3 class="ui-number">50K+</h3>
+    <p class="ui-label">Active Users</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="ui-stat-card">
+    <div class="ui-icon">
+      <img src="{% static 'images/icons/graph-icon.png' %}" alt="Downloads" />
+    </div>
+    <h3 class="ui-number">2.5M+</h3>
+    <p class="ui-label">Downloads</p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="ui-stat-card">
+    <div class="ui-icon">
+      <img src="{% static 'images/icons/badge-icon.png' %}" alt="Products" />
+    </div>
+    <h3 class="ui-number">15K+</h3>
+    <p class="ui-label">Products</p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="ui-stat-card">
+    <div class="ui-icon">
+      <img src="{% static 'images/icons/globe-icon.png' %}" alt="Countries" />
+    </div>
+    <h3 class="ui-number">150+</h3>
+    <p class="ui-label">Countries</p>
+  </div>
+</div>
+
+    
+  </div>
+</section>
+
+
+<!-- ===== OUR MISSION / VISION / IMPACT SECTION ===== -->
+<section class="mission-section">
+  <div class="container text-center">
+    <div class="mission-grid">
+      
+      <!-- CARD 1 -->
+      <div class="mission-card">
+        <div class="mission-icon">
+          <img src="{% static 'images/icons/mission-icon.png' %}" alt="Our Mission">
+        </div>
+        <h3 class="mission-title">Our Mission</h3>
+        <p class="mission-text">
+          To democratize web design by providing high-quality, affordable templates and themes that empower creators to build stunning websites without barriers.
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="mission-card">
+        <div class="mission-icon">
+          <img src="{% static 'images/icons/vision-icon.png' %}" alt="Our Vision">
+        </div>
+        <h3 class="mission-title">Our Vision</h3>
+        <p class="mission-text">
+          To be the world's most trusted marketplace for web templates and themes, known for quality, innovation, and exceptional customer experience.
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="mission-card">
+        <div class="mission-icon">
+          <img src="{% static 'images/icons/impact-icon.png' %}" alt="Our Impact">
+        </div>
+        <h3 class="mission-title">Our Impact</h3>
+        <p class="mission-text">
+          We’ve helped over 50,000 creators launch their websites, saving millions in development costs and countless hours of work.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== OUR CORE VALUES SECTION ===== -->
+<section class="core-values-section">
+  <div class="container text-center">
+    <h2 class="core-values-title">Our Core Values</h2>
+    <p class="core-values-subtitle">
+      The principles that guide everything we do
+    </p>
+
+    <div class="core-values-grid">
+      <!-- CARD 1 -->
+      <div class="mission-card">
+        <div class="mission-icon">
+          <img src="{% static 'images/icons/mission-icon.png' %}" alt="Our Mission">
+        </div>
+        <h3 class="mission-title">Customer First</h3>
+        <p class="mission-text">
+            Everything we do starts with our customers. We listen, adapt, and continuously improve to deliver the best experience.
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="mission-card">
+        <div class="mission-icon">
+          <img src="{% static 'images/icons/vision-icon.png' %}" alt="Our Vision">
+        </div>
+        <h3 class="mission-title">Quality Excellence</h3>
+        <p class="mission-text">
+          We maintain the highest standards for every theme and template. Each product is carefully reviewed and tested.
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="mission-card">
+        <div class="mission-icon">
+          <img src="{% static 'images/icons/impact-icon.png' %}" alt="Our Impact">
+        </div>
+        <h3 class="mission-title">Innovation</h3>
+        <p class="mission-text">
+          We stay ahead of design trends and technology to provide cutting-edge solutions for modern web <development class=""></development>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== MEET OUR TEAM SECTION ===== -->
+<section class="team-section">
+  <div class="container text-center">
+    <h2 class="team-title">Meet Our Team</h2>
+    <p class="team-subtitle">The passionate people behind the platform</p>
+
+    <div class="team-grid">
+      {% for member in team_members %}
+      <div class="team-card">
+        <div class="team-image">
+          <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">{{ member.name }}</h3>
+          <p class="team-role">{{ member.role }}</p>
+        </div>
+      </div>
+      {% empty %}
+      <p>No team members found.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== READY TO START CREATING SECTION ===== -->
+<section class="ready-section">
+  <div class="ready-container">
+    <h2 class="ready-title">Ready to Start Creating?</h2>
+    <p class="ready-text">
+      Join thousands of designers and developers who trust our platform to <br> build amazing websites. Get started today.
+    </p>
+    <div class="ready-buttons">
+      <a href="{% url 'main:templates' %}" class="btn-browse">Browse Templates</a>
+      <a href="{% url 'main:contact' %}" class="btn-contact">Contact</a>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

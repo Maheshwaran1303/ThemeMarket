@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg custom-navbar navbar-fixed">
+  <div class="container">
+    <!-- ===== BRAND LOGO ===== -->
+    <a class="navbar-brand" href="{% url 'main:home' %}">
+      <span class="logo-text">Thememarket</span>
+    </a>
+
+    <!-- ===== TOGGLER ===== -->
+    <button class="navbar-toggler text-white border-0" type="button"
+      data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- ===== NAV LINKS ===== -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'main:home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'themes' %}active{% endif %}" href="{% url 'main:themes' %}">Themes</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'templates' %}active{% endif %}" href="{% url 'main:templates' %}">Templates</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'main:about' %}">About Us</a></li>
+        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'main:contact' %}">Contact</a></li>
+      </ul>
+
+      <!-- ===== ICONS ===== -->
+      <div class="d-flex align-items-center gap-3">
+        <!-- Profile Icon -->
+        
+          <i class="bi bi-person-circle user-icon icon-link" id="personIcon" onclick="openAuthModal()"></i>
+          
+
+        <!-- Cart Icon -->
+        <a href="{% url 'main:cart' %}" class="icon-link position-relative">
+          <i class="bi bi-cart3"></i>
+          {% if request.user.is_authenticated %}
+            {% with cart_count=request.user.cartitem_set.count %}
+              {% if cart_count > 0 %}
+                <span class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                  {{ cart_count }}
+                </span>
+              {% endif %}
+            {% endwith %}
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% include 'main/register.html' %}
+
+

@@ -1,0 +1,276 @@
+<!-- templates/main/contact.html -->
+
+{% extends 'main/layout/base.html' %}
+{% load static %}
+
+{% block title %}Contact - ThemeMarket{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'styles/contact.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="about-hero-section">
+  <div class="about-hero-overlay"></div>
+  <div class="about-hero-content text-center">
+    <h1 class="about-title">We'd Love to Hear From You</h1>
+    <form method="GET" class="about-search-form">
+      <div class="search-bar">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search for WordPress, E commerce...">
+        <button class="search-btn" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-section">
+  <div class="container text-center">
+    <h2 class="contact-title">Get In Touch</h2>
+    <p class="contact-subtitle">
+      Have questions or need assistance? We're here to help. Reach out to us through any
+      of the following channels.
+    </p>
+
+    <div class="contact-grid">
+      
+      <!-- EMAIL CARD -->
+      <div class="contact-card">
+        <div class="icon-box">
+           <img src="{% static 'images/icons/email-icon.png' %}" alt="Email Icon">
+        </div>
+        <h4>Email Us</h4>
+        <p class="desc">Our team is here to help</p>
+        <p class="info">support@marketplace.com</p>
+      </div>
+
+      <!-- CALL CARD -->
+      <div class="contact-card">
+        <div class="icon-box">
+            <img src="{% static 'images/icons/call-icon.png' %}" alt="Call Icon">
+        </div>
+        <h4>Call Us</h4>
+        <p class="desc">Mon–Fri from 9am to 6pm</p>
+        <p class="info">+1 (555) 123–4567</p>
+      </div>
+
+      <!-- LIVE CHAT CARD -->
+      <div class="contact-card">
+        <div class="icon-box">
+          <img src="{% static 'images/icons/chat-icon.png' %}" alt="Chat Icon">
+        </div>
+        <h4>Live Chat</h4>
+        <p class="desc">Get instant support</p>
+        <p class="info">Average response: 2 minutes</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT FORM -->
+
+<section class="form-section">
+  <div class="container">
+    <h2 class="form-title">Send Us a Message</h2>
+    <p class="form-subtitle">
+      Fill out the form below and we'll get back to you as soon as possible.
+    </p>
+
+    {% if messages %}
+      <div class="form-messages">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="POST" class="contact-form">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" id="last_name" name="last_name">
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group full">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section py-5">
+  <div class="container text-center">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <p class="faq-subtitle mb-5">Quick answers to common questions</p>
+
+    <div class="accordion faq-accordion" id="faqAccordion">
+
+      <!-- FAQ ITEM 1 -->
+      <div class="accordion-item faq-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            What are your support hours?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body faq-answer">
+            Our support team is available Monday through Friday, 9:00 AM to 6:00 PM EST.
+            We also monitor emails on weekends and will respond as soon as possible.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 2 -->
+      <div class="accordion-item faq-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            How quickly will I get a response?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body faq-answer">
+            Response times vary by department: Sales inquiries within 2 hours, Support tickets within 4 hours,
+            and General inquiries within 24 hours during business days.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 3 -->
+      <div class="accordion-item faq-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Do you offer phone support?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body faq-answer">
+            Yes! Phone support is available for Business plan subscribers. All other customers
+            can reach us via email, live chat, or our contact form.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 4 -->
+      <div class="accordion-item faq-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Can I schedule a demo or consultation?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body faq-answer">
+            Absolutely! Contact our sales team at sales@marketplace.com
+            to schedule a personalized demo or consultation session.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ ITEM 5 -->
+      <div class="accordion-item faq-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed faq-question" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Where is your company located?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+          data-bs-parent="#faqAccordion">
+          <div class="accordion-body faq-answer">
+            Our headquarters are located in New York, USA. However, we operate globally
+            with remote teams around the world.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq-footer mt-5">
+      <p>Still have questions?</p>
+      <a href="#" class="btn-help">Visit help Center</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===== WE’RE HERE TO HELP SECTION ===== -->
+<section class="help-section">
+  <div class="container text-center">
+
+    <div class="help-card">
+      <div class="help-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#558713" viewBox="0 0 24 24" width="68" height="68">
+  <path d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm0 22A10 10 0 1122 12a10.011 10.011 0 01-10 10z"/>
+  <path d="M10.293 14.707L6.586 11l1.414-1.414L10.293 12.88l5.707-5.707L17.414 8z"/>
+</svg>
+
+      </div>
+
+      <h2 class="help-title">We’re Here to Help</h2>
+      <p class="help-description">
+        Our dedicated support team is committed to providing you with the best experience. Whether you need technical assistance, have sales questions, or just want to say hello, we’re always happy to hear from you.
+      </p>
+
+      <div class="help-features">
+        <div class="feature-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#558713" viewBox="0 0 24 24" width="18" height="18">
+  <path d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm0 22A10 10 0 1122 12a10.011 10.011 0 01-10 10z"/>
+  <path d="M10.293 14.707L6.586 11l1.414-1.414L10.293 12.88l5.707-5.707L17.414 8z"/>
+</svg>
+
+          <span>24-hour response time</span>
+        </div>
+        <div class="feature-item">
+<svg xmlns="http://www.w3.org/2000/svg" fill="#558713" viewBox="0 0 24 24" width="18" height="18">
+  <path d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm0 22A10 10 0 1122 12a10.011 10.011 0 01-10 10z"/>
+  <path d="M10.293 14.707L6.586 11l1.414-1.414L10.293 12.88l5.707-5.707L17.414 8z"/>
+</svg>
+
+          <span>Expert support team</span>
+        </div>
+        <div class="feature-item">
+<svg xmlns="http://www.w3.org/2000/svg" fill="#558713" viewBox="0 0 24 24" width="18" height="18">
+  <path d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm0 22A10 10 0 1122 12a10.011 10.011 0 01-10 10z"/>
+  <path d="M10.293 14.707L6.586 11l1.414-1.414L10.293 12.88l5.707-5.707L17.414 8z"/>
+</svg>
+
+          <span>Multiple contact options</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+{% endblock %}
+

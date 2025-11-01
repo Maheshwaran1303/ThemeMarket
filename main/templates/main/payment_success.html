@@ -1,0 +1,110 @@
+
+{% load static %}
+
+<title>Payment Successful | ThemeMarket</title>
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'styles/payment_success.css' %}">
+
+<!-- ===== LOADER SCREEN ===== -->
+<div id="loader-screen" class="loader-overlay">
+  <div class="loader-content">
+    <img src="{% static 'images/payment_successful.gif' %}" alt="Loading...">
+    <h3>Processing your payment...</h3>
+  </div>
+</div>
+
+<!-- ===== SUCCESS SCREEN ===== -->
+<div id="success-content" class="payment-success-container" style="display: none;">
+  <!-- Header -->
+  <div class="payment-header">
+    <div class="header-left">
+        <span class="logo-text">Thememarket</span>
+    </div>
+    <a href="{% url 'main:home' %}" class="close-btn"><i class="bi bi-x-lg"></i></a>
+  </div>
+
+
+  <!-- Success Card -->
+  <div class="payment-body fade-in">
+    <div class="success-icon">
+      <i class="bi bi-check-circle-fill"></i>
+    </div>
+
+    <h2 class="payment-title">Payment Successful</h2>
+    <p class="payment-subtitle">
+      Successfully Paid <strong>US$ {{ total|floatformat:2 }}</strong> via {{ payment_method }}
+    </p>
+
+    <div class="payment-details">
+      <h4>Payment Details</h4>
+      <div class="details-box">
+        <div class="detail-item">
+          <span>Transaction ID</span>
+          <strong>{{ transaction_id }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Date</span>
+          <strong>{{ date }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Type of Transaction</span>
+          <strong>{{ payment_method|title }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Amount</span>
+          <strong>US$ {{ total|floatformat:2 }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Status</span>
+          <strong class="success-text">Success</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <a href="{% url 'main:download_receipt' %}" class="btn-receipt">Download Receipt (PDF)</a>
+      <a href="{% url 'main:home' %}" class="btn-home">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONFETTI SCRIPT ===== -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loader-screen");
+  const content = document.getElementById("success-content");
+
+  setTimeout(() => {
+    // Fade out loader
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.8s ease";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+      content.style.display = "flex";
+      content.classList.add("fade-in");
+
+      // ✅ CONFETTI EFFECT 🎉
+      const duration = 2 * 1000;
+      const end = Date.now() + duration;
+
+      const confettiInterval = setInterval(function() {
+        const timeLeft = end - Date.now();
+        if (timeLeft <= 0) return clearInterval(confettiInterval);
+        confetti({
+          particleCount: 40,
+          startVelocity: 25,
+          spread: 360,
+          origin: { x: Math.random(), y: Math.random() - 0.2 }
+        });
+      }, 250);
+    }, 800);
+  }, 2000);
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+<!-- ===== Auth Modal ===== -->
+{% load static %}
+<div id="authModal" class="auth-modal">
+  <div class="auth-overlay" onclick="closeAuthModal()"></div>
+
+  <div class="auth-container">
+    <!-- Left Gradient Bubble Section -->
+    <div class="auth-left">
+      <div class="bubble big"></div>
+      <div class="bubble mid"></div>
+      <div class="bubble small"></div>
+    </div>
+
+    <!-- Right Form Section -->
+    <div class="auth-right">
+      <button class="close-btn" onclick="closeAuthModal()">&times;</button>
+
+      <!-- Register Form -->
+      <div id="registerForm" class="auth-form active">
+        <h2 class="auth-title">Create Account</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" name="username" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+
+          <label class="terms">
+            <input type="checkbox" required> I understood the
+            <a href="#">terms & policy</a>.
+          </label>
+
+          <button type="submit" class="btn-primary">Create Account</button>
+
+          <div class="divider"><span>or</span></div>
+          <button type="button" class="btn-google">
+            <img src="{% static 'images/google-icon.svg' %}" alt="Google">
+            Sign in with Google
+          </button>
+
+          <p class="switch-text">
+            Already have an account?
+            <a href="#" id="switchToLogin">Login</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm" class="auth-form">
+        <h2 class="auth-title">Welcome Back!</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+
+          <label class="terms">
+            <input type="checkbox" required> I understood the
+            <a href="#">terms & policy</a>.
+          </label>
+
+          <button type="submit" class="btn-primary">Login</button>
+
+          <div class="divider"><span>or</span></div>
+          <button type="button" class="btn-google">
+            <img src="{% static 'images/google-icon.svg' %}" alt="Google">
+            Continue with Google
+          </button>
+
+          <p class="switch-text">
+            Don’t have an account?
+            <a href="#" id="switchToRegister">Register</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

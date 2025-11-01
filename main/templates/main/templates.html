@@ -1,0 +1,335 @@
+{% extends 'main/layout/base.html' %}
+{% load static %}
+
+{% block title %}Templates & UI Kits - ThemeMarket{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'styles/templates.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="templates-hero-section">
+  <div class="container templates-hero-container">
+    <div class="row align-items-center justify-content-between">
+
+      <!-- LEFT SIDE CONTENT -->
+      <div class="col-lg-6 col-md-12 text-center ">
+        <h2 class="templates-heading">Templates & UI Kits</h2>
+        <p class="templates-subtext text-center">
+          Browse our collection of premium HTML <br> templates, landing pages, and UI kits. 
+          Built <br> with modern frameworks and ready to <br> customize for your next project.
+        </p>
+
+        <!-- SEARCH BAR -->
+        <div class="templates-search mt-4">
+          <div class="search-box">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" placeholder="Search for WordPress, E commerce..." />
+            <button class="search-btn">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE IMAGES -->
+      <div class="col-lg-6 col-md-12 position-relative text-center mt-5 mt-lg-0">
+        <div class="template-img top-image">
+          {% if featured_items.0.image %}
+          <img src="{{ featured_items.0.image.url }}" alt="{{ featured_items.0.name }}">
+          {% endif %}
+        </div>
+        <div class="template-img bottom-image">
+          {% if featured_items.1.image %}
+          <img src="{{ featured_items.1.image.url }}" alt="{{ featured_items.1.name }}">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- UI TEMPLATE SECTION -->
+<section class="ui-template-section">
+  <div class="container-xl ui-template-container text-center">
+    <h2 class="ui-template-title">Save on UI Templates</h2>
+
+    <div class="row justify-content-center g-4 mt-4">
+      {% for template in templates %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="ui-card">
+          <div class="ui-card-img">
+            <img src="{{ template.image.url }}" alt="{{ template.name }}">
+          </div>
+          <div class="ui-card-body">
+            <h5 class="ui-card-title">{{ template.name }}</h5>
+            <p class="ui-card-author">by {{ template.author }}</p>
+            <div class="ui-card-footer">
+              <div class="left-footer">
+                <p class="price">${{ template.price|floatformat:0 }}</p>
+                <p class="rating">
+                  {% for i in "12345" %}
+                    {% if i|add:'0' <= template.rating|floatformat:0 %}
+                      <i class="bi bi-star-fill"></i>
+                    {% else %}
+                      <i class="bi bi-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                  <span class="rating-count">{{ template.rating|floatformat:1 }}</span>
+                </p>
+                <p class="sales">{{ template.sales }} Sales</p>
+              </div>
+              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' template.id %}'">
+                <i class="bi bi-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- WEEKLY BEST SELLERS -->
+<section class="ui-template-section">
+  <div class="container-xl ui-template-container text-center">
+    <h2 class="ui-template-title">Weekly Best Sellers</h2>
+
+    <div class="row justify-content-center g-4 mt-4">
+      {% for best_seller in best_sellers %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="ui-card">
+          <div class="ui-card-img">
+            <img src="{{ best_seller.image.url }}" alt="{{ best_seller.name }}">
+          </div>
+          <div class="ui-card-body">
+            <h5 class="ui-card-title">{{ best_seller.name }}</h5>
+            <p class="ui-card-author">by {{ best_seller.author }}</p>
+            <div class="ui-card-footer">
+              <div class="left-footer">
+                <p class="price">${{ best_seller.price|floatformat:0 }}</p>
+                <p class="rating">
+                  {% for i in "12345" %}
+                    {% if i|add:'0' <= best_seller.rating|floatformat:0 %}
+                      <i class="bi bi-star-fill"></i>
+                    {% else %}
+                      <i class="bi bi-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                  <span class="rating-count">{{ best_seller.rating|floatformat:1 }}</span>
+                </p>
+                <p class="sales">{{ best_seller.sales }} Sales</p>
+              </div>
+              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' best_seller.id %}'">
+                <i class="bi bi-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- TOP SELLERS -->
+<section class="ui-template-section">
+  <div class="container-xl ui-template-container text-center">
+    <h2 class="ui-template-title">Top Sellers</h2>
+
+    <div class="row justify-content-center g-4 mt-4">
+      {% for top_seller in top_sellers %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="ui-card">
+          <div class="ui-card-img">
+            <img src="{{ top_seller.image.url }}" alt="{{ top_seller.name }}">
+          </div>
+          <div class="ui-card-body">
+            <h5 class="ui-card-title">{{ top_seller.name }}</h5>
+            <p class="ui-card-author">by {{ top_seller.author }}</p>
+            <div class="ui-card-footer">
+              <div class="left-footer">
+                <p class="price">${{ top_seller.price|floatformat:0 }}</p>
+                <p class="rating">
+                  {% for i in "12345" %}
+                    {% if i|add:'0' <= top_seller.rating|floatformat:0 %}
+                      <i class="bi bi-star-fill"></i>
+                    {% else %}
+                      <i class="bi bi-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                  <span class="rating-count">{{ top_seller.rating|floatformat:1 }}</span>
+                </p>
+                <p class="sales">{{ top_seller.sales }} Sales</p>
+              </div>
+              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' top_seller.id %}'">
+                <i class="bi bi-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- TOP CLEAN ITEMS -->
+<section class="ui-template-section">
+  <div class="container-xl ui-template-container text-center">
+    <h2 class="ui-template-title">Top Clean Items</h2>
+
+    <div class="row justify-content-center g-4 mt-4">
+      {% for top_clean_item in top_clean_items %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="ui-card">
+          <div class="ui-card-img">
+            <img src="{{ top_clean_item.image.url }}" alt="{{ top_clean_item.name }}">
+          </div>
+          <div class="ui-card-body text-center">
+            <h5 class="ui-card-title">{{ top_clean_item.name }}</h5>
+            <p class="ui-card-author">by {{ top_clean_item.author }}</p>
+            <div class="ui-card-footer">
+              <div class="left-footer">
+                <p class="price">${{ top_clean_item.price|floatformat:0 }}</p>
+                <p class="rating">
+                  {% for i in "12345" %}
+                    {% if i|add:'0' <= top_clean_item.rating|floatformat:0 %}
+                      <i class="bi bi-star-fill"></i>
+                    {% else %}
+                      <i class="bi bi-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                  <span class="rating-count">{{ top_clean_item.rating|floatformat:1 }}</span>
+                </p>
+                <p class="sales">{{ top_clean_item.sales }} Sales</p>
+              </div>
+              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' top_clean_item.id %}'">
+                <i class="bi bi-cart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     STAY UPDATED SECTION
+=========================== -->
+<section class="stay-updated py-5 text-center">
+  <div class="container">
+    <div class="update-box mx-auto p-5 rounded-4">
+      <h3 class="update-title mb-3">Stay Updated</h3>
+      <p class="update-subtitle mb-4">
+        Get the latest themes, exclusive deals, and design inspiration <br>
+        delivered to your inbox weekly
+      </p>
+
+      <form method="POST" class="update-form d-flex justify-content-center flex-wrap">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" required class="email-input me-2">
+        <button type="submit" class="btn subscribe-btn">Subscribe</button>
+      </form>
+
+      <p class="privacy-text mt-3">
+        By subscribing, you agree to our Privacy Policy and consent to receive updates
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================
+     CUSTOMER TESTIMONIALS
+=========================== -->
+<section class="testimonials py-5 text-center">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header mb-5">
+      <div class="badge-pill mx-auto">What Our Customers Say</div>
+      <p class="subtitle mt-2">Join thousands of satisfied customers</p>
+    </div>
+
+    <!-- Testimonials Row -->
+    <div class="row justify-content-center g-4">
+      <!-- Testimonial 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-header d-flex align-items-center mb-3">
+            <img src="{% static 'images/testimonials/testimonial1.jpg' %}" alt="Sarah Johnson" class="testimonial-img me-3">
+            <div class="testimonial-user">
+              <h6 class="user-name">Sarah Johnson</h6>
+              <p class="user-role">Web Developer</p>
+            </div>
+          </div>
+          <div class="stars mb-3">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            The quality of themes on this marketplace is outstanding. I've built over 20 client sites using templates from here and they never disappoint.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-header d-flex align-items-center mb-3">
+            <img src="{% static 'images/testimonials/testimonial2.jpg' %}" alt="Michael Chen" class="testimonial-img me-3">
+            <div class="testimonial-user">
+              <h6 class="user-name">Michael Chen</h6>
+              <p class="user-role">Agency Owner</p>
+            </div>
+          </div>
+          <div class="stars mb-3">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            As an agency, we rely on high-quality templates to deliver projects quickly. The variety and quality here are unmatched in the industry.
+          </p>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="testimonial-card">
+          <div class="testimonial-header d-flex align-items-center mb-3">
+            <img src="{% static 'images/testimonials/testimonial3.jpg' %}" alt="Emily Rodriguez" class="testimonial-img me-3">
+            <div class="testimonial-user">
+              <h6 class="user-name">Emily Rodriguez</h6>
+              <p class="user-role">Freelance Designer</p>
+            </div>
+          </div>
+          <div class="stars mb-3">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            I love how easy it is to customize these themes. The documentation is excellent and the support from authors is fantastic.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
