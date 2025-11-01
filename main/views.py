@@ -190,20 +190,47 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 # 🟢 REGISTER
+from django.contrib.auth.models import User
+from django.http import JsonResponse
+from django.contrib import messages
+import re
+
+# ✅ AJAX Email Availability Checker
+def check_email_exists(request):
+    email = request.GET.get('email', '').strip()
+    exists = User.objects.filter(email=email).exists()
+    return JsonResponse({'exists': exists})
+
+# ✅ Register User View
 def register_user(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
+        username = request.POST.get('username', '').strip()
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '').strip()
 
-        if User.objects.filter(email=email).exists():
-            messages.error(request, 'Email already registered.')
+        # --- Validation Checks ---
+        if not username or not email or not password:
+            messages.error(request, 'All fields are required.')
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
+        if not re.match(r'^[A-Za-z\s]{3,}$', username):
+            messages.error(request, 'Enter a valid name (letters only, min 3 chars).')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        if len(password) < 6:
+            messages.error(request, 'Password must be at least 6 characters.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered. Please login instead.')
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+
+        # --- Create User ---
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         messages.success(request, 'Account created successfully! Please login.')
         return redirect(request.META.get('HTTP_REFERER', '/'))
+
     return redirect('/')
 
 # 🟠 LOGIN
