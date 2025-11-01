@@ -148,11 +148,15 @@
 }
 
 .ui-stats-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #1a2a47;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: #0C2F5C;
   margin-bottom: 60px;
+  font-style: Bold;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 /* ===== GRID ===== */
@@ -162,43 +166,46 @@
   gap: 30px;
   justify-items: center;
   align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: 60px auto;
 }
 
 /* ===== CARD ===== */
 .ui-stat-card {
-  background: #fff;
-  border: 3px solid rgba(175, 168, 168, 1);
+  background: #ffffff;
+  border: 2px solid #AFA8A8;
   border-radius: 16px;
   padding: 35px 20px;
-  width: 200px;
-  height: 180px;
-  box-shadow: 0px 5px 4px 7px #00000026;
+  width: 250px;
+  height: 215px;
+  box-shadow: 0px 5px 4px 7px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .ui-stat-card:hover {
   transform: translateY(-6px);
-  /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25); */
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.25);
 }
 
-/* ===== ICON ===== */
+/* ===== ICON IMAGE ===== */
 .ui-icon {
-  width: 65px;
-  height: 65px;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #d8f0c4, #eaffd6);
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  background-color: #f1fce8; /* light green background */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px auto;
-  box-shadow: 0px 3px 6px rgba(108, 161, 43, 0.3);
+  margin: 0 auto 18px auto;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
 }
 
-.ui-icon i {
-  font-size: 30px;
-  color: #6ca12b;
+.ui-icon img {
+  width: 45px; /* perfectly balanced size inside box */
+  height: 45px;
+  object-fit: contain;
+  background: none;
 }
 
 /* ===== NUMBER ===== */
@@ -206,8 +213,8 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 22px;
-  color: #22427a;
-  margin-bottom: 5px;
+  color: #0C2F5C;
+  margin-bottom: 4px;
 }
 
 /* ===== LABEL ===== */
@@ -233,7 +240,7 @@
   }
 
   .ui-stat-card {
-    width: 80%;
+    width: 90%;
     height: auto;
   }
 }
@@ -241,11 +248,12 @@
 
 /* ===============================
    OUR MISSION / VISION / IMPACT SECTION
-   =============================== */
+=============================== */
 
 .mission-section {
-  background: #f4f6ff;
+  background: #f4f6ff; /* same light bluish background */
   padding: 80px 0;
+  margin-top: -80px;
 }
 
 .mission-grid {
@@ -254,62 +262,72 @@
   gap: 30px;
   justify-items: center;
   align-items: stretch;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 /* ===== CARD ===== */
 .mission-card {
   background: #fff;
-  border: 2px solid rgba(175, 168, 168, 1);
+  border: 2px solid #AFA8A8;
   border-radius: 16px;
   padding: 40px 25px;
   width: 100%;
-  max-width: 330px;
-  box-shadow: 0px 5px 4px 7px #00000026;
+  max-width: 350px;
+  box-shadow: 0px 5px 4px 7px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .mission-card:hover {
   transform: translateY(-6px);
-  /* box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== ICON ===== */
+/* ===== ICON IMAGE ===== */
 .mission-icon {
   width: 65px;
   height: 65px;
-  border-radius: 12px;
-  background: #e4ecfa;
+  border-radius: 14px;
+  background: #D8E9FF; /* soft blue background behind icon */
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px auto;
 }
 
-.mission-icon i {
-  font-size: 30px;
-  color: #22427a;
+.mission-icon img {
+  width: 57px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ===== TITLE ===== */
 .mission-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: rgba(0, 0, 0, 1);
-;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+  color: #000;
   margin-bottom: 15px;
+  font-style: Bold;
+  line-height: 35px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 /* ===== TEXT ===== */
 .mission-text {
   font-family: "Inter", sans-serif;
   font-size: 15px;
-  color: rgba(0, 0, 0, 1);
+  color: #000;
   line-height: 1.7;
   margin: 0 auto;
-  max-width: 280px;
+  max-width: 300px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -344,21 +362,31 @@
 .core-values-section {
   background: #f4f6ff;
   padding: 80px 0;
+  margin-top: -60px;
 }
 
 .core-values-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: rgba(0, 0, 0, 1);
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: #0C2F5C;
   margin-bottom: 10px;
+  font-style: Bold;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .core-values-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 25px;
   color: #000000;
   margin-bottom: 60px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* ===== GRID ===== */
@@ -372,58 +400,6 @@
   margin: 0 auto;
 }
 
-/* ===== CARD ===== */
-.core-value-card {
-  background: #fff;
-  border: 2px solid #AFA8A8;
-  border-radius: 16px;
-  padding: 40px 25px;
-  width: 100%;
-  max-width: 330px;
-  box-shadow: 0px 5px 4px 7px #00000026;
-  transition: all 0.3s ease;
-}
-
-.core-value-card:hover {
-  transform: translateY(-8px);
-  /* box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); */
-}
-
-/* ===== ICON ===== */
-.core-value-icon {
-  width: 65px;
-  height: 65px;
-  border-radius: 12px;
-  background: #e4ecfa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px auto;
-}
-
-.core-value-icon i {
-  font-size: 30px;
-  color: #22427a;
-}
-
-/* ===== TITLE ===== */
-.core-value-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #0e1d3d;
-  margin-bottom: 15px;
-}
-
-/* ===== TEXT ===== */
-.core-value-text {
-  font-family: "Inter", sans-serif;
-  font-size: 15px;
-  color: #333;
-  line-height: 1.7;
-  margin: 0 auto;
-  max-width: 280px;
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
@@ -458,21 +434,32 @@
 .team-section {
   background: #f4f6ff;
   padding: 80px 0;
+  margin-top: -60px;
 }
 
 .team-title {
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #1a2a47;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  color: #0C2F5C;
   margin-bottom: 10px;
+  font-style: Bold;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .team-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
-  color: #333;
+  font-size: 25px;
+  color: #000;
   margin-bottom: 60px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .team-grid {
@@ -507,7 +494,7 @@
 }
 
 .team-info {
-  background: #1a2a47;
+  background: #0C2F5C;
   color: #fff;
   padding: 18px 0;
   border-bottom-left-radius: 16px;
@@ -525,6 +512,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -30px;
 }
 
 .ready-container {
@@ -534,6 +522,7 @@
   border-radius: 20px;
   padding: 60px 40px;
   max-width: 850px;
+  max-height: 370px;
   box-shadow: 0px 16px 4.3px 0px #00000040;
 }
 

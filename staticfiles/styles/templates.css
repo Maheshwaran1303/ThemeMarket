@@ -480,12 +480,19 @@
   margin: 0;
 }
 
+
+
 /* Rating stars */
 .stars i {
-  color: #f1c40f;
-  font-size: 18px;
+  color: #ffc107;
+  font-size: 0.9rem;
 }
 
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
 /* Testimonial text */
 .testimonial-text {
   font-family: 'Inter', sans-serif;
@@ -506,3 +513,237 @@
   }
 }
 
+
+
+/* ==========================
+   STAY UPDATED SECTION
+=========================== */
+.stay-updated {
+  background: #f8f7ff;
+  padding: 100px 0;
+}
+
+.update-box {
+  background: #242155;
+  color: #fff;
+  max-width: 1240px;
+  max-height: 482px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.update-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  color: #fff;
+  font-style: Bold;
+  line-height: 58px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.update-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 25px;
+  color: #ddd;
+  line-height: 1.6;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* Form Styling */
+.update-form {
+  margin-top: 20px;
+}
+
+.email-input {
+  width: 667px;
+  height: 59px;
+  border-radius: 20px;
+  border: 1px solid #FFFFFF;
+  padding: 10px 15px;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+.email-input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+.email-input:focus {
+  border-color: #6CA12B;
+  background: rgba(255,255,255,0.05);
+}
+
+/* Button */
+.subscribe-btn {
+  background: #6CA12B;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px 25px;
+  transition: background 0.3s ease;
+  width: 136px;
+  height: 59px;
+}
+.subscribe-btn:hover {
+  background: #5a8f23;
+}
+
+/* Privacy text */
+.privacy-text {
+  color: #FFFFFF;
+  margin-top: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .email-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .update-box {
+    padding: 40px 20px;
+  }
+}
+
+
+/* ==========================
+   CUSTOMER TESTIMONIALS
+=========================== */
+.testimonials {
+  background: #f8f7ff;
+  padding: 100px 0;
+}
+
+.testimonials .badge-pill {
+  display: inline-block;
+  width: 477px;
+  height: 55px;
+  background: linear-gradient(96.83deg, #5A38F7 40.61%, #9318FA 74.81%);
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.testimonials .subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 25px;
+  color: #000000;
+  margin-top: 12px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  background: #fff;
+  border: 2px solid #AFA8A8;
+  border-radius: 12px;
+  box-shadow: 0px 5px 4px 7px #00000026;
+  padding: 25px 25px 30px 25px;
+  text-align: left;
+  transition: all 0.3s ease;
+  width: 350px;
+  height: 352px;
+  gap: 10px;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* Header (user + image) */
+.testimonial-header {
+  display: flex;
+  align-items: center;
+}
+.testimonial-img {
+  width: 91px;
+  height: 91px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 2px;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.user-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: #777;
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* Rating stars */
+.stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  margin-left: 0 ;
+}
+
+.stars i {
+  color: #f1c40f;
+  font-size: 14px;
+}
+
+/* Testimonial text */
+.testimonial-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #444;
+  line-height: 1.6;
+  margin-top: 10px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonial-card {
+    margin-bottom: 20px;
+  }
+  .testimonial-img {
+    width: 50px;
+    height: 50px;
+  }
+}

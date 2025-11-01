@@ -88,7 +88,7 @@
   outline: none;
   padding: 15px 20px;
   font-size: 16px;
-  color: #333;
+  color: #000;
   font-family: "Inter", sans-serif;
   background: transparent;
 }
@@ -148,20 +148,28 @@
 }
 
 .contact-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  color: #1a2a47;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #0C2F5C;
   margin-bottom: 15px;
+  font-style: Bold;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .contact-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
-  color: #333;
-  max-width: 650px;
-  margin: 0 auto 60px;
+  font-size: 25px;
+  color: #000;
+  max-width: 1000px;
+  margin: 10px auto 60px;
   line-height: 1.6;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 /* ===== GRID ===== */
@@ -195,7 +203,7 @@
 .icon-box {
   width: 70px;
   height: 70px;
-  background: #d8e7f9;
+  background: #B1D7EE;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -204,30 +212,44 @@
 }
 
 .icon-box img {
-  width: 35px;
-  height: 35px;
+  width: 46px;
+  height: 46px;
   object-fit: contain;
 }
 
 /* ===== TEXT ===== */
 .contact-card h4 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  color: #1a2a47;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0C2F5C;
   margin-bottom: 10px;
+  font-style: Bold;
+  line-height: 35px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
+
 .contact-card .desc {
-  color: #333;
-  font-size: 14px;
+  color: #000;
   margin-bottom: 5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 35px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .contact-card .info {
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 400;
   color: #000;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  line-height: 35px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -258,21 +280,31 @@ body {
 .form-section {
   padding: 100px 0;
   text-align: center;
+  margin-top: -70px;
 }
 
 .form-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  color: #1a2a47;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #0C2F5C;
   margin-bottom: 10px;
+  font-style: Bold;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .form-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 15px;
-  color: #333;
+  font-size: 25px;
+  font-weight: 400;
+  color: #000;
   margin-bottom: 50px;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* ===== FORM ===== */
@@ -301,14 +333,17 @@ body {
 }
 
 label {
-  font-weight: 600;
+  font-weight: 700;
   color: #000;
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 20px;
+  font-style: Bold;
+  line-height: 26px;
+  letter-spacing: 0.5px;
 }
 
 /* ===== INPUTS ===== */
-input,
+.form-row input,
 textarea {
   background: #78D5FF;
   border-bottom: 3px solid #FFFFFF;
@@ -369,18 +404,28 @@ textarea:focus {
 }
 
 .faq-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  color: #1a2a47;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #0C2F5C;
   margin-bottom: 10px;
+  font-family: Roboto;
+  font-style: Bold;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .faq-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 15px;
-  color: #333;
+  font-size: 25px;
+  color: #000;
   margin-bottom: 40px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Accordion Styling */
@@ -400,7 +445,7 @@ textarea:focus {
 
 /* Accordion Header (Question Button) */
 .accordion-button {
-  background: linear-gradient(90deg, #4b0082 0%, #8b008b 100%);
+  background: linear-gradient(90deg, #44107C 52.4%, #66155D 100%);
   color: #fff;
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -418,16 +463,22 @@ textarea:focus {
 }
 
 .accordion-button::after {
-  content: '\25BC'; /* down arrow */
-  color: #fff;
-  font-size: 13px;
-  transform: rotate(0deg);
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: rotate(45deg);
+  margin-left: auto;
   transition: transform 0.3s ease;
+  border-radius: 2px;
 }
 
 .accordion-button:not(.collapsed)::after {
-  transform: rotate(180deg);
+  transform: rotate(-135deg);
 }
+
 
 /* Accordion Body (Answer) */
 .accordion-body {
@@ -442,16 +493,21 @@ textarea:focus {
 
 /* Footer (Help Button) */
 .faq-footer p {
-  font-size: 16px;
+  font-size: 25px;
   color: #000;
   margin-bottom: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
 .btn-help {
   display: inline-block;
   font-family: "Inter", sans-serif;
   background: #fff;
-  color: #1a2a47;
+  color: #0C2F5C;
   border: 1px solid #a0a0a0;
   box-shadow: 0px 5px 4px 3px #00000040;
   border-radius: 5px;
@@ -480,7 +536,7 @@ textarea:focus {
 }
 
 .help-card {
-  background: linear-gradient(90deg, #4b0082 0%, #8b008b 100%);
+  background: linear-gradient(90deg, #44107C 52.4%, #66155D 100%);
   border-radius: 16px;
   padding: 60px 40px;
   max-width: 850px;
@@ -490,27 +546,37 @@ textarea:focus {
 }
 
 .help-icon img {
-  width: 48px;
-  height: 48px;
+  width: 68px;
+  height: 68px;
   margin-bottom: 20px;
 }
 
 .help-title {
   font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-size: 30px;
+  font-weight: 700;
+  font-size: 50px;
   color: #ffffff;
   margin-bottom: 15px;
+  font-style: Bold;
+  line-height: 58px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .help-description {
   font-family: "Inter", sans-serif;
-  font-size: 15px;
+  font-size: 22px;
   color: #ffffff;
-  line-height: 1.6;
-  max-width: 700px;
+  max-width: 875px;
   margin: 0 auto 30px auto;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0%;
+  text-align: center;
 }
+
 
 /* ===== FEATURES ROW ===== */
 .help-features {
@@ -535,6 +601,14 @@ textarea:focus {
   width: 18px;
   height: 18px;
   filter: brightness(0) saturate(100%) invert(80%) sepia(40%) saturate(400%) hue-rotate(65deg);
+}
+
+.feature-item span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  color: #ffffff;
+  font-size: 16px;
 }
 
 /* ===== RESPONSIVE ===== */

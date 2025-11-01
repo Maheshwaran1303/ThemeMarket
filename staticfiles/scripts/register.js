@@ -1,23 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("authModal");
-  const closeBtn = document.getElementById("closeModal");
-  const personIcon = document.getElementById("personIcon");
+// Open & Close Modal
+function openAuthModal() {
+  document.getElementById("authModal").style.display = "flex";
+}
 
-  personIcon.addEventListener("click", (e) => {
-    e.preventDefault();
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  });
+function closeAuthModal() {
+  document.getElementById("authModal").style.display = "none";
+}
 
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-  });
+// Switch Register ↔ Login
+document.addEventListener("DOMContentLoaded", function () {
+  const registerForm = document.getElementById("registerForm");
+  const loginForm = document.getElementById("loginForm");
+  const switchToLogin = document.getElementById("switchToLogin");
+  const switchToRegister = document.getElementById("switchToRegister");
 
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-  });
+  if (switchToLogin) {
+    switchToLogin.addEventListener("click", function (e) {
+      e.preventDefault();
+      registerForm.classList.remove("active");
+      loginForm.classList.add("active");
+    });
+  }
+
+  if (switchToRegister) {
+    switchToRegister.addEventListener("click", function (e) {
+      e.preventDefault();
+      loginForm.classList.remove("active");
+      registerForm.classList.add("active");
+    });
+  }
 });

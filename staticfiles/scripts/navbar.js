@@ -7,3 +7,28 @@ window.addEventListener("scroll", function() {
     navbar.classList.remove("scrolled");
   }
 });
+
+// Toggle Modal Visibility
+function openAuthModal() {
+  document.getElementById("authModal").style.display = "flex";
+}
+
+function closeAuthModal() {
+  document.getElementById("authModal").style.display = "none";
+}
+
+// Switch Between Register & Login
+document.addEventListener("DOMContentLoaded", () => {
+  const switchToLogin = document.getElementById("switchToLogin");
+  const switchToRegister = document.getElementById("switchToRegister");
+
+  if (switchToLogin)
+    switchToLogin.addEventListener("click", () => {
+      fetch("/login/") // optional if dynamically loaded
+    });
+
+  if (switchToRegister)
+    switchToRegister.addEventListener("click", () => {
+      fetch("/register/")
+    });
+});
