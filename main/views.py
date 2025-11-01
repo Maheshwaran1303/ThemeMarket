@@ -361,6 +361,10 @@ def update_cart_quantity(request):
 
 from .models import Checkout
 
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+import re
+
 @login_required
 def checkout_view(request):
     cart_items = CartItem.objects.filter(user=request.user)
@@ -369,25 +373,50 @@ def checkout_view(request):
         messages.warning(request, "Your cart is empty. Add some items first.")
         return redirect('main:cart')
 
-    # Calculate totals
     total = sum(item.subtotal() for item in cart_items)
-    discount = total * Decimal('0.03')  # 3% discount
+    discount = total * Decimal('0.03')
     grand_total = total - discount
 
     if request.method == "POST":
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        phone_code = request.POST.get('phone_code')
-        phone_number = request.POST.get('phone_number')
-        flat_no = request.POST.get('flat_no')
-        address = request.POST.get('address')
-        city = request.POST.get('city')
-        state = request.POST.get('state')
-        postal_code = request.POST.get('postal_code')
-        landmark = request.POST.get('landmark')
+        # Collect Data
+        first_name = request.POST.get('first_name', '').strip()
+        last_name = request.POST.get('last_name', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone_code = request.POST.get('phone_code', '').strip()
+        phone_number = request.POST.get('phone_number', '').strip()
+        flat_no = request.POST.get('flat_no', '').strip()
+        address = request.POST.get('address', '').strip()
+        city = request.POST.get('city', '').strip()
+        state = request.POST.get('state', '').strip()
+        postal_code = request.POST.get('postal_code', '').strip()
+        landmark = request.POST.get('landmark', '').strip()
         same_address = request.POST.get('same_address') == 'on'
 
+        # ✅ Backend Validation
+        errors = []
+        if not first_name or not email or not phone_number or not flat_no or not address or not city or not state or not postal_code:
+            errors.append("Please fill in all required fields.")
+
+        # Email Validation
+        try:
+            validate_email(email)
+        except ValidationError:
+            errors.append("Enter a valid email address.")
+
+        # Phone Validation
+        if not re.match(r'^\d{6,15}$', phone_number):
+            errors.append("Enter a valid phone number (6–15 digits).")
+
+        # Postal Code Validation
+        if not re.match(r'^\d{4,10}$', postal_code):
+            errors.append("Enter a valid postal code.")
+
+        if errors:
+            for e in errors:
+                messages.error(request, e)
+            return redirect('main:checkout')
+
+        # ✅ Save to DB if all validations pass
         Checkout.objects.create(
             user=request.user,
             first_name=first_name,
