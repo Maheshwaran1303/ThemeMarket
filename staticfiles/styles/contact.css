@@ -343,7 +343,9 @@ label {
 }
 
 /* ===== INPUTS ===== */
-.form-row input,
+/* ===== INPUTS WITH GRADIENT FOCUS ===== */
+.contact-form input[type="text"],
+input[type="email"],
 textarea {
   background: #78D5FF;
   border-bottom: 3px solid #FFFFFF;
@@ -356,15 +358,22 @@ textarea {
   font-size: 14px;
   font-family: "Inter", sans-serif;
   color: #000;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
-textarea {
-  resize: none;
-}
-
-input:focus,
+/* ===== Gradient Glow Focus Effect ===== */
+.contact-form input[type="text"]:focus,
+input[type="email"]:focus,
 textarea:focus {
-  outline: 2px solid #3ba9f0;
+  outline: none;
+  border-bottom: 3px solid transparent;
+  background-image: linear-gradient(#78D5FF, #78D5FF),
+    linear-gradient(90deg, #5A38F7 37.5%, #9318FA 83.65%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 0 10px rgba(90, 56, 247, 0.5);
+  color: #000;
 }
 
 /* ===== BUTTON ===== */
@@ -393,6 +402,124 @@ textarea:focus {
   }
 }
 
+/* ===== FORM VALIDATION (REAL-TIME) ===== */
+.error-text {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-top: 5px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-border {
+  border: 2px solid #d32f2f !important;
+  background-color: #ffd8d8 !important;
+  transition: all 0.3s ease;
+}
+
+.success-border {
+  border: 2px solid #4caf50 !important;
+  background-color: #e9ffe9 !important;
+  transition: all 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SUCCESS POPUP ANIMATION ===== */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #4caf50;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 25px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  z-index: 9999;
+  animation: popupIn 0.4s ease;
+}
+
+.success-popup p {
+  margin-top: 15px;
+}
+
+/* Checkmark Animation */
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #4caf50;
+  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #fff;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+/* Animations */
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #4caf50;
+  }
+}
+
+@keyframes popupIn {
+  from {
+    transform: translate(-50%, -45%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -60%) scale(0.95);
+  transition: all 0.4s ease;
+}
+
 
 /* ===============================
    BOOTSTRAP FAQ STYLING
@@ -401,6 +528,7 @@ textarea:focus {
 .faq-section {
   background: #f4f6ff;
   padding: 100px 0;
+  margin-top: -50px;
 }
 
 .faq-title {
@@ -533,6 +661,7 @@ textarea:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -70px;
 }
 
 .help-card {

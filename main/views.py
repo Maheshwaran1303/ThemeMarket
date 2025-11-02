@@ -374,7 +374,8 @@ def checkout_view(request):
         return redirect('main:cart')
 
     total = sum(item.subtotal() for item in cart_items)
-    discount = total * Decimal('0.03')
+    # The current discount calculation is 3% of total
+    discount = total * Decimal('0.03') 
     grand_total = total - discount
 
     if request.method == "POST":
@@ -414,9 +415,16 @@ def checkout_view(request):
         if errors:
             for e in errors:
                 messages.error(request, e)
-            return redirect('main:checkout')
+            # Re-render the form with errors
+            return render(request, 'main/checkout.html', {
+                'cart_items': cart_items,
+                'total': total,
+                'discount': discount,
+                'grand_total': grand_total,
+            })
 
         # ✅ Save to DB if all validations pass
+        # This saves the checkout data before moving to payment
         Checkout.objects.create(
             user=request.user,
             first_name=first_name,
@@ -435,7 +443,8 @@ def checkout_view(request):
             discount=discount
         )
 
-        messages.success(request, "✅ Checkout successful! Your order is being processed.")
+        # 🎯 CRITICAL CHANGE: Redirect to payment page AFTER successful checkout submission
+        messages.success(request, "Billing details saved! Choose your payment method.")
         return redirect('main:payment')
 
     return render(request, 'main/checkout.html', {
@@ -446,64 +455,101 @@ def checkout_view(request):
     })
 
 
-
+from .models import CartItem, Checkout, Payment
+from decimal import Decimal
+import uuid # 👈 Ensure this import is present
 from datetime import datetime
-import random
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-from .models import CartItem
-from reportlab.pdfgen import canvas  # For PDF receipt generation
+from django.shortcuts import render, redirect, get_object_or_404 # Ensure get_object_or_404 is imported
 
+# ...
+
+from decimal import Decimal
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import CartItem, Checkout, Payment
+import uuid 
+# ... மற்ற imports ...
 
 @login_required
 def payment_view(request):
     cart_items = CartItem.objects.filter(user=request.user)
-    total = sum(float(item.subtotal()) for item in cart_items)
 
-    if request.method == 'POST':
-        payment_method = request.POST.get('payment_method', 'Card')
+    if not cart_items.exists():
+        messages.warning(request, "Your cart is empty. Nothing to pay for.")
+        return redirect('main:cart')
+    
+    # Calculate Totals for display (required for both GET and POST)
+    total = sum(item.subtotal() for item in cart_items)
+    discount = total * Decimal('0.03') 
+    grand_total = total - discount
+    
+    context = {
+        'cart_items': cart_items,
+        'total': total, 
+        'discount': discount, 
+        'grand_total': grand_total, 
+    }
 
-        # Save details in session
-        request.session['payment_total'] = float(total)
-        request.session['payment_method'] = payment_method
+    if request.method == "POST":
+        # 🟢 POST Request (Payment Submission Logic)
+        try:
+            latest_checkout = Checkout.objects.filter(user=request.user).latest('date')
+            payment_amount = latest_checkout.total
+        except Checkout.DoesNotExist:
+            messages.error(request, "Checkout details not found. Please complete checkout again.")
+            return redirect('main:checkout')
+        
+        payment_method = request.POST.get('payment_method')
+        
+        # Save Payment Record
+        new_transaction_id = uuid.uuid4().hex[:12]
+        payment_record = Payment.objects.create(
+            user=request.user,
+            payment_method=payment_method,
+            total=payment_amount, 
+            transaction_id=new_transaction_id 
+        )
+        
+        # Clear cart and checkout record
+        cart_items.delete() 
+        latest_checkout.delete()
 
-        return redirect('main:payment_success')
+        # Redirect to success page
+        return redirect('main:payment_success', payment_id=payment_record.id)
 
-    return render(request, 'main/payment.html', {'cart_items': cart_items, 'total': total})
+
+    # 🎯 CRITICAL FIX: Add the return statement for the GET Request!
+    # 🔵 GET Request (Page Load Logic)
+    return render(request, 'main/payment.html', context)
+
 
 
 @login_required
-def payment_success(request):
-    total = request.session.get('payment_total', 0)
-    payment_method = request.session.get('payment_method', 'Card')
-    transaction_id = random.randint(100000000000, 999999999999)
-    date = datetime.now().strftime("%d %B %Y")
-
-    # Clear cart after success
-    CartItem.objects.filter(user=request.user).delete()
+def payment_success(request, payment_id): # ✅ payment_id argument added
+    # 🎯 FIX: Get the payment record instead of relying on session/URL params
+    payment_record = get_object_or_404(Payment, id=payment_id, user=request.user)
 
     # Save values to session for PDF download
     request.session['last_payment'] = {
-        'transaction_id': transaction_id,
-        'total': total,
-        'method': payment_method,
-        'date': date,
+        'transaction_id': payment_record.transaction_id,
+        'total': float(payment_record.total), # Convert Decimal to float for session
+        'method': payment_record.payment_method,
+        'date': payment_record.date.strftime("%d %B %Y"),
     }
 
     return render(request, 'main/payment_success.html', {
-        'transaction_id': transaction_id,
-        'total': total,
-        'payment_method': payment_method,
-        'date': date,
+        'transaction_id': payment_record.transaction_id,
+        'total': payment_record.total,
+        'payment_method': payment_record.payment_method,
+        'date': payment_record.date.strftime("%d %B %Y"),
     })
-
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 from datetime import datetime
+from django.http import HttpResponse
 
 @login_required
 def download_receipt(request):

@@ -1,5 +1,3 @@
-<!-- templates/main/payment.html -->
-
 {% extends 'main/layout/base.html' %}
 {% load static %}
 
@@ -14,100 +12,123 @@
     <hr class="payment-divider">
 
     <div class="payment-grid">
-      <!-- LEFT SECTION -->
       <form method="POST" class="payment-form" action="{% url 'main:payment' %}">
         {% csrf_token %}
 
-        <!-- Credit/Debit Card -->
         <div class="payment-card">
           <label class="radio-option">
             <input type="radio" name="payment_method" value="card" checked>
-            <span>Credit/Debit Cards</span>
-            <p>Pay with your Credit / Debit Card</p>
-            <img src="{% static 'images/cards.png' %}" alt="cards" class="payment-icons">
+            <div>
+              <span>Credit/Debit Cards</span>
+              <p>Pay with your Credit / Debit Card</p>
+            </div>
+            <img src="{% static 'images/cards.png' %}" class="card-img" alt="Credit/Debit Cards" class="payment-icons card-logos">
           </label>
 
           <div class="card-details">
             <div class="form-group">
-              <label>Card Number</label>
-              <input type="text" name="card_number" placeholder="Card Number">
+              <div class="input-with-icon">
+                <input type="text" id="card-number" name="card_number" placeholder="Card Number" required>
+                <i class="bi bi-credit-card"></i> </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label>MM / YY</label>
-                <input type="text" name="expiry" placeholder="MM / YY">
+                
+                <div class="input-with-icon">
+                  <input type="text" id="expiry" name="expiry" placeholder="MM / YY" required>
+                  <i class="bi bi-calendar"></i> </div>
               </div>
               <div class="form-group">
-                <label>CVV</label>
-                <input type="password" name="cvv" placeholder="CVV">
+               
+                <div class="input-with-icon">
+                  <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+                  <i class="bi bi-lock-fill"></i> </div>
               </div>
             </div>
-          </div>
+
+            </div>
         </div>
 
-        <!-- Bank Transfer -->
         <div class="payment-option">
           <label class="radio-option">
-            <input type="radio" name="payment_method" value="bank">
-            <span>Direct Bank Transfer</span>
-            <p>Make payment directly through bank account.</p>
-          </label>
+            <input type="radio" name="payment_method" value="bank_transfer">
+            <div>
+              <span>Direct Bank Transfer</span>
+              <p>Make payment directly through bank account.</p>
+            </div>
+            </label>
         </div>
 
-        <!-- Other Methods -->
         <div class="payment-option">
           <label class="radio-option">
             <input type="radio" name="payment_method" value="other">
-            <span>Other Payment Methods</span>
-            <p>Make payment through GPay, PayPal, PhonePe etc.</p>
-            <img src="{% static 'images/upi.png' %}" alt="UPI icons" class="payment-icons">
+            <div>
+              <span>Other Payment Methods</span>
+              <p>Make payment through Gpay, Paypal, Phonepay etc</p>
+            </div>
+            <img src="{% static 'images/upi.png' %}" alt="UPI/Paypal/Phonepay" class="payment-icons">
           </label>
         </div>
 
         <div class="payment-buttons">
           <a href="{% url 'main:checkout' %}" class="back-btn">Back</a>
-          <button type="submit" class="pay-btn" onclick="showLoader()">Pay Securely</button>
+          <button type="submit" class="pay-btn" onclick="showLoader(event)">Pay Securely</button>
         </div>
       </form>
 
-    <div id="loader" class="loader-overlay">
-        <img src="{% static 'images/payment_successful.gif' %}" alt="Loading...">
-    </div>
-
-
-      <!-- RIGHT SUMMARY -->
       <div class="summary-card">
-        <h3>Order Summary <span>{{ cart_items.count }} Items</span></h3>
-        <div class="order-items">
-          {% for item in cart_items %}
-          <div class="order-item">
-            <p>{{ item.template.name }}</p>
-            <span>${{ item.template.price|floatformat:2 }}</span>
-          </div>
-          {% endfor %}
-        </div>
+  <h3>Order Summary <span>{{ cart_items.count }} Items</span></h3>
+  <div class="order-items">
+    {% for item in cart_items %}
+    <div class="order-item">
+      <p>{{ item.template.name }}</p>
+      <span>${{ item.template.price|floatformat:2 }}</span>
+    </div>
+    {% endfor %}
+  </div>
 
-        <div class="order-totals">
-          <p class="discount">Total discount <span>${{ discount|floatformat:2 }}</span></p>
-          <p class="fee">Handling Fee <span>$0.00</span></p>
-          <h4>Total <span>US$ {{ grand_total|floatformat:2 }}</span></h4>
-        </div>
+<div class="order-totals">
+  <p class="discount">Total discount <span>${{ discount|floatformat:2 }}</span></p>
+  <p class="fee">Handling Fee <span>$0.00</span></p>
+  <h4 class="total-line">Total <span>US$ {{ grand_total|floatformat:2 }}</span></h4>
 
-        <div class="secure-checkout">
-          <i class="bi bi-lock"></i> Secure Checkout
-        </div>
-      </div>
+  <div class="secure-checkout">
+    <i class="bi bi-lock-fill lock"></i>
+    <span>Secure Checkout</span>
+  </div>
+</div>
     </div>
   </div>
 </section>
 
 <script>
-function showLoader() {
-  document.getElementById("loader").style.display = "flex";
-  setTimeout(() => {
-    window.location.href = "{% url 'main:payment_success' %}";
-  }, 2000); // 2 seconds load
-}
+  function showLoader(event) {
+    event.preventDefault(); // Prevent default form submission
+    const form = document.querySelector('.payment-form');
+
+    // Basic Form Validation (only for the checked radio button's fields)
+    const selectedMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
+    let isValid = true;
+    if (selectedMethod === 'card') {
+      const cardNumber = document.getElementById('card-number').value;
+      const expiry = document.getElementById('expiry').value;
+      const cvv = document.getElementById('cvv').value;
+
+      if (!cardNumber || !expiry || !cvv) {
+        isValid = false;
+        alert('Please fill in all card details.'); // Simple alert for missing fields
+      }
+      // Add more rigorous validation here if needed (e.g., regex for card number, expiry format)
+    }
+
+    if (!isValid) {
+      return; // Stop if validation fails
+    }
+
+    form.submit();
+
+  }
 </script>
 {% endblock %}
