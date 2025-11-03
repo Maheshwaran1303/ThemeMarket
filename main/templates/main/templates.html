@@ -78,9 +78,12 @@
                 </p>
                 <p class="sales">{{ template.sales }} Sales</p>
               </div>
-              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' template.id %}'">
-                <i class="bi bi-cart-fill"></i>
-              </button>
+              <a href="{% url 'main:add_to_cart' template.id %}" class="cart-link-btn">
+                  <button class="btn btn-sm btn-primary cart-btn" data-template-id="{{ template.id }}">
+                      <i class="bi bi-cart-fill"></i>
+                  </button>
+                 
+              </a>
             </div>
           </div>
         </div>
@@ -97,33 +100,36 @@
     <h2 class="ui-template-title">Weekly Best Sellers</h2>
 
     <div class="row justify-content-center g-4 mt-4">
-      {% for best_seller in best_sellers %}
+      {% for template in best_sellers %}
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="ui-card">
           <div class="ui-card-img">
-            <img src="{{ best_seller.image.url }}" alt="{{ best_seller.name }}">
+            <img src="{{ template.image.url }}" alt="{{ template.name }}">
           </div>
           <div class="ui-card-body">
-            <h5 class="ui-card-title">{{ best_seller.name }}</h5>
-            <p class="ui-card-author">by {{ best_seller.author }}</p>
+            <h5 class="ui-card-title">{{ template.name }}</h5>
+            <p class="ui-card-author">by {{ template.author }}</p>
             <div class="ui-card-footer">
               <div class="left-footer">
-                <p class="price">${{ best_seller.price|floatformat:0 }}</p>
+                <p class="price">${{ template.price|floatformat:0 }}</p>
                 <p class="rating">
                   {% for i in "12345" %}
-                    {% if i|add:'0' <= best_seller.rating|floatformat:0 %}
+                    {% if i|add:'0' <= template.rating|floatformat:0 %}
                       <i class="bi bi-star-fill"></i>
                     {% else %}
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ best_seller.rating|floatformat:0 }}</span>
+                  <span class="rating-count">{{ template.rating|floatformat:0 }}</span>
                 </p>
-                <p class="sales">{{ best_seller.sales }} Sales</p>
+                <p class="sales">{{ template.sales }} Sales</p>
               </div>
-              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' best_seller.id %}'">
-                <i class="bi bi-cart-fill"></i>
-              </button>
+              <a href="{% url 'main:add_to_cart' template.id %}" class="cart-link-btn">
+                  <button class="btn btn-sm btn-primary cart-btn" data-template-id="{{ template.id }}">
+                      <i class="bi bi-cart-fill"></i>
+                  </button>
+                 
+              </a>
             </div>
           </div>
         </div>
@@ -140,33 +146,36 @@
     <h2 class="ui-template-title">Top Sellers</h2>
 
     <div class="row justify-content-center g-4 mt-4">
-      {% for top_seller in top_sellers %}
+      {% for template in top_sellers %}
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="ui-card">
           <div class="ui-card-img">
-            <img src="{{ top_seller.image.url }}" alt="{{ top_seller.name }}">
+            <img src="{{ template.image.url }}" alt="{{ template.name }}">
           </div>
           <div class="ui-card-body">
-            <h5 class="ui-card-title">{{ top_seller.name }}</h5>
-            <p class="ui-card-author">by {{ top_seller.author }}</p>
+            <h5 class="ui-card-title">{{ template.name }}</h5>
+            <p class="ui-card-author">by {{ template.author }}</p>
             <div class="ui-card-footer">
               <div class="left-footer">
-                <p class="price">${{ top_seller.price|floatformat:0 }}</p>
+                <p class="price">${{ template.price|floatformat:0 }}</p>
                 <p class="rating">
                   {% for i in "12345" %}
-                    {% if i|add:'0' <= top_seller.rating|floatformat:0 %}
+                    {% if i|add:'0' <= template.rating|floatformat:0 %}
                       <i class="bi bi-star-fill"></i>
                     {% else %}
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ top_seller.rating|floatformat:0 }}</span>
+                  <span class="rating-count">{{ template.rating|floatformat:0 }}</span>
                 </p>
-                <p class="sales">{{ top_seller.sales }} Sales</p>
+                <p class="sales">{{ template.sales }} Sales</p>
               </div>
-              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' top_seller.id %}'">
-                <i class="bi bi-cart-fill"></i>
-              </button>
+              <a href="{% url 'main:add_to_cart' template.id %}" class="cart-link-btn">
+                  <button class="btn btn-sm btn-primary cart-btn" data-template-id="{{ template.id }}">
+                      <i class="bi bi-cart-fill"></i>
+                  </button>
+                 
+              </a>
             </div>
           </div>
         </div>
@@ -183,33 +192,36 @@
     <h2 class="ui-template-title">Top Clean Items</h2>
 
     <div class="row justify-content-center g-4 mt-4">
-      {% for top_clean_item in top_clean_items %}
+      {% for template in top_clean_items %}
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="ui-card">
           <div class="ui-card-img">
-            <img src="{{ top_clean_item.image.url }}" alt="{{ top_clean_item.name }}">
+            <img src="{{ template.image.url }}" alt="{{ template.name }}">
           </div>
-          <div class="ui-card-body text-center">
-            <h5 class="ui-card-title">{{ top_clean_item.name }}</h5>
-            <p class="ui-card-author">by {{ top_clean_item.author }}</p>
+          <div class="ui-card-body">
+            <h5 class="ui-card-title">{{ template.name }}</h5>
+            <p class="ui-card-author">by {{ template.author }}</p>
             <div class="ui-card-footer">
               <div class="left-footer">
-                <p class="price">${{ top_clean_item.price|floatformat:0 }}</p>
+                <p class="price">${{ template.price|floatformat:0 }}</p>
                 <p class="rating">
                   {% for i in "12345" %}
-                    {% if i|add:'0' <= top_clean_item.rating|floatformat:0 %}
+                    {% if i|add:'0' <= template.rating|floatformat:0 %}
                       <i class="bi bi-star-fill"></i>
                     {% else %}
                       <i class="bi bi-star"></i>
                     {% endif %}
                   {% endfor %}
-                  <span class="rating-count">{{ top_clean_item.rating|floatformat:0 }}</span>
+                  <span class="rating-count">{{ template.rating|floatformat:0 }}</span>
                 </p>
-                <p class="sales">{{ top_clean_item.sales }} Sales</p>
+                <p class="sales">{{ template.sales }} Sales</p>
               </div>
-              <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' top_clean_item.id %}'">
-                <i class="bi bi-cart-fill"></i>
-              </button>
+              <a href="{% url 'main:add_to_cart' template.id %}" class="cart-link-btn">
+                  <button class="btn btn-sm btn-primary cart-btn" data-template-id="{{ template.id }}">
+                      <i class="bi bi-cart-fill"></i>
+                  </button>
+                 
+              </a>
             </div>
           </div>
         </div>
@@ -331,5 +343,41 @@
   </div>
 </section>
 
+<!-- Cart Modal -->
+<div class="cart-modal-overlay" id="cartModal" style="display: none;">
+  <div class="cart-modal">
+    <button class="modal-close-btn" onclick="closeCartModal()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    
+    <div class="modal-header">
+      <i class="bi bi-check-lg modal-check-icon"></i>
+      <h4 class="modal-title">Item added to your cart</h4>
+    </div>
+    
+    <div class="modal-body d-flex align-items-center">
+      <div class="product-image-area">
+        <img id="modalProductImage" src="{% static 'images/placeholder.png' %}" alt="Product Image" class="product-modal-img">
+      </div>
+      
+      <div class="product-details-area">
+        <h5 class="product-modal-price" id="modalProductPrice">$19</h5>
+        <p class="product-modal-license">License : Regular</p>
+        <p class="product-modal-support">Support: 6 month support</p>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-modal-browse" onclick="closeCartModal()">Keep Browsing</button>
+      <a href="{% url 'main:checkout' %}" class="btn-modal-checkout">Go to Checkout</a>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'scripts/cart_modal.js' %}"></script> 
+{% endblock %}
+

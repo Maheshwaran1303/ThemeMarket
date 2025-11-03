@@ -252,9 +252,11 @@ Theme Market{% endblock %} {% block extra_css %}
 
   <!-- CART ICON (Column 2) -->
     <div class="cart-column">
-      <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
-        <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
-      </button>
+      <a href="{% url 'main:add_to_cart' product.id %}" class="cart-link">
+        <button class="cart-btn" data-template-id="{{ product.id }}">
+          <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+        </button>
+      </a>
     </div>
 
 
@@ -406,9 +408,11 @@ Theme Market{% endblock %} {% block extra_css %}
 
               <!-- COLUMN 2: Cart Icon -->
               <div class="cart-column">
-                <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
-                  <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
-                </button>
+                <a href="{% url 'main:add_to_cart' product.id %}" class="cart-link">
+                  <button class="cart-btn" data-template-id="{{ product.id }}">
+                    <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+                  </button>
+                </a>
               </div>
 
               <!-- COLUMN 3: Live Preview -->
@@ -461,9 +465,11 @@ Theme Market{% endblock %} {% block extra_css %}
 
               <!-- COLUMN 2: Cart Icon -->
               <div class="cart-column">
-                <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+               <a href="{% url 'main:add_to_cart' product.id %}" class="cart-link">
+                <button class="cart-btn" data-template-id="{{ product.id }}">
                   <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
                 </button>
+              </a>
               </div>
 
               <!-- COLUMN 3: Live Preview -->
@@ -529,9 +535,11 @@ Theme Market{% endblock %} {% block extra_css %}
 
   <!-- CART ICON (Column 2) -->
 <div class="cart-column">
-  <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
-    <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
-  </button>
+      <a href="{% url 'main:add_to_cart' product.id %}" class="cart-link">
+            <button class="cart-btn" data-template-id="{{ product.id }}">
+              <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
+            </button>
+      </a>
 </div>
 
 
@@ -754,8 +762,40 @@ Theme Market{% endblock %} {% block extra_css %}
   </div>
 </section>
 
+<div class="cart-modal-overlay" id="cartModal" style="display: none;">
+  <div class="cart-modal">
+    <button class="modal-close-btn" onclick="closeCartModal()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    
+    <div class="modal-header">
+      <i class="bi bi-check-lg modal-check-icon"></i>
+      <h4 class="modal-title">Item added to your cart</h4>
+    </div>
+    
+    <div class="modal-body d-flex align-items-center">
+      <div class="product-image-area">
+        <img id="modalProductImage" src="{% static 'images/placeholder.png' %}" alt="Product Image" class="product-modal-img">
+      </div>
+      
+      <div class="product-details-area">
+        <h5 class="product-modal-price" id="modalProductPrice">$19</h5>
+        <p class="product-modal-license">License : Regular</p>
+        <p class="product-modal-support">Support: 6 month support</p>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-modal-browse" onclick="closeCartModal()">Keep Browsing</button>
+      <a href="{% url 'main:checkout' %}" class="btn-modal-checkout">Go to Checkout</a>
+    </div>
+  </div>
+</div>
+
+
 {% endblock %} 
 
 {% block extra_js %}
   <script src="{% static 'scripts/home.js' %}"></script>
+  <script src="{% static 'scripts/cart_modal.js' %}"></script>
 {% endblock %}

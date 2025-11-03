@@ -32,11 +32,10 @@
     <div class="cart-column">
       <a href="{% url 'main:add_to_cart' product.id %}" class="cart-link">
     <button class="cart-btn" data-template-id="{{ product.id }}">
+      <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
         </button>
 </a>
-      <!-- <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
-        <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
-      </button> -->
+
     </div>
 
 
