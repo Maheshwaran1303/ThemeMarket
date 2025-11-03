@@ -30,9 +30,13 @@
 
   <!-- CART ICON (Column 2) -->
     <div class="cart-column">
-      <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
+      <a href="{% url 'main:add_to_cart' product.id %}" class="cart-link">
+    <button class="cart-btn" data-template-id="{{ product.id }}">
+        </button>
+</a>
+      <!-- <button class="cart-btn" onclick="location.href='{% url 'main:add_to_cart' product.id %}'">
         <img src="{% static 'images/cart-icon.png' %}" alt="Cart" class="cart-icon-img">
-      </button>
+      </button> -->
     </div>
 
 

@@ -795,3 +795,171 @@
     height: 50px;
   }
 }
+
+/* ==============================================
+   🎯 CART ADDED MODAL STYLES (100% Exact Match)
+============================================== */
+
+/* Modal Backdrop */
+.cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Above all other elements */
+}
+
+/* Modal Box */
+.cart-modal {
+  background: #fff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 550px; /* Adjusted to fit the image proportions */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px 30px; /* Padding inside the modal */
+  position: relative;
+}
+
+/* Header (Checkmark and Title) */
+.modal-header {
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee; /* Separator not clearly visible in image, but good practice */
+}
+
+.modal-check-icon {
+  font-size: 40px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+/* Modal Body (Product Details) */
+.modal-body {
+  padding: 25px 0;
+  gap: 20px;
+  align-items: flex-start !important; /* Align content to the top */
+}
+
+.product-image-area {
+  flex: 0 0 100px; /* Fixed width for image area */
+}
+
+.product-modal-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.product-details-area {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.product-modal-price {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.product-modal-license,
+.product-modal-support {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #000;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+/* Footer (Buttons) */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+/* Button Styling (100% Exact Match) */
+.btn-modal-browse,
+.btn-modal-checkout {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-modal-browse {
+  background: #fff;
+  color: #555;
+  border: 1px solid #B0B0B0; /* Light grey border */
+}
+
+.btn-modal-browse:hover {
+  background: #f5f5f5;
+}
+
+.btn-modal-checkout {
+  background: #6CA12B; /* Green color from image */
+  color: #fff;
+  border: 1px solid #6CA12B;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-modal-checkout:hover {
+  background: #5a8f23;
+  border-color: #5a8f23;
+}
+
+/* Close Button (X) */
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 500px) {
+  .modal-body {
+    flex-direction: column;
+    text-align: center;
+  }
+  .product-details-area {
+    text-align: center;
+  }
+  .modal-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-modal-browse,
+  .btn-modal-checkout {
+    width: 100%;
+  }
+}

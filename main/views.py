@@ -294,7 +294,10 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from .models import UITemplate, CartItem
 
-@login_required(login_url='main:login')  # 👈 Redirects anonymous users to login
+
+from django.http import JsonResponse # Ensure this is imported at the top
+
+@login_required(login_url='main:login')
 def add_to_cart(request, template_id):
     template = get_object_or_404(UITemplate, id=template_id)
 
@@ -303,11 +306,25 @@ def add_to_cart(request, template_id):
     if not created:
         cart_item.quantity += 1
         cart_item.save()
-        messages.info(request, f"Quantity updated for '{template.name}'.")
+        message_type = "updated"
     else:
-        messages.success(request, f"✅ '{template.name}' added to your cart!")
+        message_type = "added"
+    
+    # Cart item count (for updating the header icon)
+    cart_count = CartItem.objects.filter(user=request.user).count()
 
-    return redirect('main:cart')
+    # 🎯 CRITICAL FIX: Return JSON data instead of redirecting
+    return JsonResponse({
+        'success': True,
+        'message_type': message_type,
+        'cart_count': cart_count,
+        'item': {
+            'id': template.id,
+            'name': template.name,
+            'price': float(template.price), # Convert Decimal for JSON
+            'image_url': template.image.url if template.image else '',
+        }
+    })
 
 
 
